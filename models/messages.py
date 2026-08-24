@@ -3,9 +3,9 @@ from enum import Enum
 class Messages(Enum):
 
     MESSAGE_AYUDA_WELCOME = (
-        "Hola, soy **Tech**, tu asistente de soporte técnico.\n\n",
+        "Hola, soy **Tech**, tu asistente de soporte técnico.\n",
         "Antes de continuar, recuerda que toda solicitud debe registrarse en **Helpdesk**, donde se genera un **ID de caso**.\n\n",
-        "¿Ya creaste tu caso en Helpdesk? Selecciona una opción:\n\n",
+        "¿Ya creaste tu caso en Helpdesk? Selecciona una opción:\n",
         "✅ `/Si` → Ya tengo un ID de caso.\n",
         "❌ `/No` → Aún no he creado el caso."
     )
@@ -30,4 +30,17 @@ class Messages(Enum):
         "¿Deseas que te ayude a crear un nuevo ticket?\n\n",
         "✅ `/Si` → Crear un nuevo ticket.\n",
         "❌ `/No` → Lo crearé más tarde."
+    )
+    
+    MESSAGE_INFO_TICKET = (
+        "- `Id Ticket:` [ID_TICKET]",
+        "- `Titulo Ticket:` [TITULO_TICKET]",
+        # "- `Impacto:`", # - Informacion que trae la consulta, pero no tan relevante para el usuario
+        "- `Prioridad:` [PRIORIDAD]",
+        "- `Categoria:` [CATEGORIA]",
+        "- `Entidad:` [ENTIDAD]",
+        "- `Solicitantes:` [SOLICITANTES]",
+        "- `Categoría Ticket:` [CATEGORIA_TICKET]",
+        # "- `Id Técnicos:`", # - Informacion que trae la consulta, pero no tan relevante para el usuario
+        "- `Técnicos:` [TECNICOS]"
     )
