@@ -135,9 +135,10 @@ class SoporteHandler():
                         bot_handler.send_reply(message, "Ticket no encontrado");
                     else:
                         
-                        if (not info_ticket[0][6] == bot_handler.storage.get(f"{message['sender_full_name']}@aciel.co")["name"]):
-                            bot_handler.send_reply(message, "Ticket Consultado.");
-                            bot_handler.send_reply(message, f"`Titulo:`{info_ticket[0][0]}\nUrgencia:{Urgencia.info_ticket[0][1].value}\nImpacto:{Impacto.info_ticket[0][2].value}\nPrioridad:{Prioridad.info_ticket[0][3].value}");
+                        
+                        bot_handler.send_reply(message, "Ticket Consultado.");
+                        print(type(info_ticket))
+                        #bot_handler.send_reply(message, f"`Titulo:`{info_ticket[0][0]}\n");
 
                     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
                             "name":None, 
