@@ -44,6 +44,7 @@ class SoporteHandler():
             "`/No` -> No quieres crear un nuevo ticket. "
         )
         print(message)
+        
         # Si no existe la llave, la crea
         if not bot_handler.storage.contains(f"{message['sender_full_name']}@aciel.co"):
 
@@ -62,9 +63,9 @@ class SoporteHandler():
         # Validacion de los comandos para el bot
         # Comando /Ayuda -> Comando principal para:
         # - Crear casos
-        # - Validar el estado del caso y actualizaciones
-        # - Obtener informacion del caso
-        # - Obtener informacion de soporte - contacto
+        # - Validar el estado del caso y actualizaciones("posteriormente")
+        #   - Obtener informacion del caso
+        #   - Obtener informacion de soporte - contacto
         if bot_handler.storage.get(f"{message['sender_full_name']}@aciel.co")["process"] == "/ayuda" or message["full_content"] == "/ayuda":
             
             # Si el comando no esta inicializado
@@ -87,7 +88,7 @@ class SoporteHandler():
 
                 # Si la respuesta es '/si', se le pregunta a la persona si tiene el id
                 # Se cambia el step a 'id_ticket'
-                if message["full_content"] == "/si":
+                if message["full_content"].lower() == "/si":
                     bot_handler.send_reply(message, "".join(map(str, message_adyuda_caso_si)));
                     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
                             "name":message["sender_full_name"], 
@@ -118,8 +119,11 @@ class SoporteHandler():
             elif bot_handler.storage.get(f"{message['sender_full_name']}@aciel.co")["step"] == "id_ticket":
                 
                 list_message = message["full_content"].split(" ");
-                if len(list_message) == 2 and list_message[0] == "/si":
+                if len(list_message) == 2 and list_message[0].lower() == "/si":
+                    
                     bot_handler.send_reply(message, "Se esta consultando el ticket");
+                    info_ticket = find_ticket(int(list_message[1]));
+                    
                     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
                             "name":None, 
                             "email":None,
