@@ -6,6 +6,11 @@ from zulip_bots.lib import AbstractBotHandler
 # Funciones creadas
 from database.queries import find_ticket;
 
+# Modelos creados
+from models.impacto import Impacto;
+from models.prioridad import Prioridad;
+from models.urgencia import Urgencia;
+
 class SoporteHandler():
     def usage(self) -> str:
         return """
@@ -125,6 +130,15 @@ class SoporteHandler():
                     info_ticket = find_ticket(int(list_message[1]));
                     print(info_ticket)
                     
+                    # Si no encuentra ningun ticket con ese id
+                    if (info_ticket == []):
+                        bot_handler.send_reply(message, "Ticket no encontrado");
+                    else:
+                        
+                        if (not info_ticket[0][6] == bot_handler.storage.get(f"{message['sender_full_name']}@aciel.co")["name"]):
+                            bot_handler.send_reply(message, "Ticket Consultado.");
+                            bot_handler.send_reply(message, f"`Titulo:`{info_ticket[0][0]}\nUrgencia:{Urgencia.info_ticket[0][1].value}\nImpacto:{Impacto.info_ticket[0][2].value}\nPrioridad:{Prioridad.info_ticket[0][3].value}");
+
                     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
                             "name":None, 
                             "email":None,
