@@ -1,9 +1,10 @@
 # See readme.md for instructions on running this code.
 
 from typing import Any, Dict
-
 from zulip_bots.lib import AbstractBotHandler
 
+# Funciones creadas
+from database.queries import find_ticket;
 
 class SoporteHandler():
     def usage(self) -> str:

@@ -45,6 +45,3 @@ def find_ticket(id_ticket:int)->str:
         cursor.close();
     except QueryError as e:
         return e.message;
-
-numero = int(input("Ingrese el id:"))
-find_ticket(numero);
