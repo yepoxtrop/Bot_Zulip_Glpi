@@ -33,14 +33,14 @@ class Messages(Enum):
     )
     
     MESSAGE_INFO_TICKET = (
-        "- `Id Ticket:` [ID_TICKET]",
-        "- `Titulo Ticket:` [TITULO_TICKET]",
-        # "- `Impacto:`", # - Informacion que trae la consulta, pero no tan relevante para el usuario
-        "- `Prioridad:` [PRIORIDAD]",
-        "- `Categoria:` [CATEGORIA]",
-        "- `Entidad:` [ENTIDAD]",
-        "- `Solicitantes:` [SOLICITANTES]",
-        "- `Categoría Ticket:` [CATEGORIA_TICKET]",
+        "- `Id Ticket:` [ID_TICKET] \n",
+        "- `Titulo Ticket:` [TITULO_TICKET] \n",
+        # "- `Impacto:` \n", # - Informacion que trae la consulta, pero no tan relevante para el usuario
+        "- `Prioridad:` [PRIORIDAD] \n",
+        "- `Categoria:` [CATEGORIA] \n",
+        "- `Entidad:` [ENTIDAD] \n",
+        "- `Solicitantes:` [SOLICITANTES] \n",
+        "- `Categoría Ticket:` [CATEGORIA_TICKET] \n",
         # "- `Id Técnicos:`", # - Informacion que trae la consulta, pero no tan relevante para el usuario
-        "- `Técnicos:` [TECNICOS]"
+        "- `Técnicos:` [TECNICOS] \n"
     )
