@@ -10,7 +10,7 @@ from database.connector import connector_db;
 from database.query_error import QueryError; # Clase de error personalizado
 
 # Funciones para consulta e insercion en la base de datos del glpi
-def find_ticket(id_ticket:int)->str:
+def find_ticket(id_ticket:int):
     try:
         if not connector_db.is_connected():
             raise QueryError("Conexion no establecida", 500);
@@ -41,7 +41,9 @@ def find_ticket(id_ticket:int)->str:
             WHERE glpi_tickets.id = '{id_ticket}'
             ORDER BY glpi_tickets.id DESC;)
         """);
-        print(cursor.fetchall());
+        data = cursor.fetchall();
         cursor.close();
+        
+        return data;
     except QueryError as e:
         return e.message;
