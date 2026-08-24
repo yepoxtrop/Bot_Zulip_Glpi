@@ -123,6 +123,7 @@ class SoporteHandler():
                     
                     bot_handler.send_reply(message, "Se esta consultando el ticket");
                     info_ticket = find_ticket(int(list_message[1]));
+                    print(info_ticket)
                     
                     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
                             "name":None, 
