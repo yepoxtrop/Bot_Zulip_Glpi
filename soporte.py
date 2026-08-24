@@ -10,6 +10,7 @@ from database.queries import find_ticket;
 from models.impacto import Impacto;
 from models.prioridad import Prioridad;
 from models.urgencia import Urgencia;
+from models.messages import Messages;
 
 class SoporteHandler():
     def usage(self) -> str:
@@ -21,15 +22,6 @@ class SoporteHandler():
         """
 
     def handle_message(self, message: Dict[str, Any], bot_handler: AbstractBotHandler) -> None:
-        # Tuplas con los mensajes
-        message_ayuda_welcome = (
-        	"💬 Hola! 😊 \n",
-        	"Recuerda que toda solicitud debe diligenciarse por medio de Helpdesk 🖥️, donde se genera un ID de caso 🔢.",
-        	"¿Ya realizaste este proceso? 🤔💭 \n",
-        	"`/Si` -> Ya create un caso. \n"
-        	"`/No` -> Aún no has creado el caso."
-        )
-
         message_ayuda_caso = (
         	"Id  \n",
         	"Regalanos el id del ticket.",
@@ -37,17 +29,6 @@ class SoporteHandler():
         	"`/No` -> Si no tienes el id."
         )
 
-        message_adyuda_caso_si = (
-            "Dame el id de ticket de la siguiente forma:\n",
-            "`/Si numero_ticket` -> Si tienes el ticket.\n", 
-            "`/No` -> Si no cuentas con el ticket."
-        )
-
-        message_adyuda_caso_no = (
-            "¿Quieres crear un caso?:\n",
-            "`/Si` -> Si quieres crear un nuevo ticket.\n", 
-            "`/No` -> No quieres crear un nuevo ticket. "
-        )
         print(message)
         
         # Si no existe la llave, la crea
@@ -75,7 +56,7 @@ class SoporteHandler():
             
             # Si el comando no esta inicializado
             if bot_handler.storage.get(f"{message['sender_full_name']}@aciel.co")["step"] == None:
-                content = "".join(map(str, message_ayuda_welcome));
+                content = "".join(map(str, Messages.MESSAGE_AYUDA_WELCOME.value));
                 status_dict = bot_handler.storage.get("status");
                 bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
                         "name":message["sender_full_name"], 
@@ -94,7 +75,7 @@ class SoporteHandler():
                 # Si la respuesta es '/si', se le pregunta a la persona si tiene el id
                 # Se cambia el step a 'id_ticket'
                 if message["full_content"].lower() == "/si":
-                    bot_handler.send_reply(message, "".join(map(str, message_adyuda_caso_si)));
+                    bot_handler.send_reply(message, "".join(map(str, Messages.MESSAGE_AYUDA_TICKET_YES.value)));
                     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
                             "name":message["sender_full_name"], 
                             "email":message["sender_email"],
@@ -107,7 +88,7 @@ class SoporteHandler():
                 # Si la respuesta es '/no', se le pregunta si quiere crear un caso
                 # Se cambia el step a 'crear_ticker'
                 elif message["full_content"] == "/no":
-                    bot_handler.send_reply(message, "".join(map(str, message_adyuda_caso_no)));
+                    bot_handler.send_reply(message, "".join(map(str, Messages.MESSAGE_AYUDA_TICKET_NO.value)));
                     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
                             "name":message["sender_full_name"], 
                             "email":message["sender_email"],
@@ -151,7 +132,7 @@ class SoporteHandler():
                 elif list_message[0] == "/no":
                     
                     # preguntar si quiere crear el caso
-                    bot_handler.send_reply(message, "".join(map(str, message_adyuda_caso_no)));
+                    bot_handler.send_reply(message, "".join(map(str, Messages.MESSAGE_AYUDA_TICKET_NO.value)));
                     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
                             "name":message["sender_full_name"], 
                             "email":message["sender_email"],
