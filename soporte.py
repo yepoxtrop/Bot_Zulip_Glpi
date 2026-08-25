@@ -129,15 +129,12 @@ class SoporteHandler():
                         bot_handler.send_reply(message, "Ticket Consultado.");
                         bot_handler.send_reply(message,  menssage_final);
                         
-                        bot_handler.send_message(
-                            {
-                                "type": "stream",
-                                "to": "Soporte",
-                                "subject": "Título del tema",
-                                "content": "Hola, este es un mensaje automático enviado por el bot.",
-                            }
-                        )
-
+                        bot_handler.send_message({
+                            "type": "stream",
+                            "to": "Soporte",
+                            "subject": "Título del tema",
+                            "content": "Hola, este es un mensaje automático enviado por el bot.",
+                        })
 
                     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
                             "name":None, 
