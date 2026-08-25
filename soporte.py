@@ -133,7 +133,7 @@ class SoporteHandler():
                             "type": "stream",
                             "to": "Soporte",
                             "subject": "Título del tema",
-                            "content": "Hola, este es un mensaje automático enviado por el bot.",
+                            "content": f"`@all` Hola compañeros, {message['sender_full_name']} acaba de consultar sobre su ticket, por favor alguno comuniquese con el colaborador para brindarle soporte.",
                         })
 
                     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
