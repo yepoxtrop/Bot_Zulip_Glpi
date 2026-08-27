@@ -327,7 +327,7 @@ class SoporteHandler():
 
                 # Si la respuesta es '/windows'
                 # Se hace una petición a al api de zulip, se carga el archivo y se envia atachado
-                elif message["full_content"] == "/no":
+                elif message["full_content"].lower() == "/linux":
                     # Pass the path to your zuliprc file here.
                     client = zulip.Client(config_file="./zuliprc");
 
