@@ -71,10 +71,10 @@ class Messages(Enum):
     MESSAGE_IMG = (
         """
         <div class="message_inline_image">
-            <a href=[URL_IMAGEN] title="example.png">
+            <a href="[URL_IMAGEN]" title="example.png">
                 <img data-original-dimensions="1920x1080"
-                    data-original-content-type="image/png"
-                src=[URL_IMAGEN]>
+                     data-original-content-type="image/png"
+                     src="[URL_IMAGEN]">
             </a>
         </div>
         """

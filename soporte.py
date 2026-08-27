@@ -347,7 +347,7 @@ class SoporteHandler():
                     content = content.replace("[URL_ARCHIVO]", list_files[0]);
                     
                     content_image = "".join(map(str, Messages.MESSAGE_IMG.value));
-                    content_image = content_image.replace("[URL_IMAGEN]", f"\"{list_files[1]}\"");
+                    content_image = content_image.replace("[URL_IMAGEN]", list_files[1]);
                      
                     bot_handler.send_reply(message, content);
                     bot_handler.send_reply(message, content_image);
