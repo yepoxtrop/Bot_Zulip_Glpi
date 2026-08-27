@@ -63,22 +63,11 @@ class Messages(Enum):
         "Haz click en la url de abajo para descargar un ejecutable.:\n"
         "- [Ejecutable_Rustdesk]([URL_ARCHIVO])\n\n"
         "El código que verás en pantalla es el código de tu rustdesk, como se ve en el ejemplo de abajo.\n",
-        "<img src=[URL_IMAGEN] >"
+        "![windows.png]([URL_IMAGEN])"
         #"En la pantalla verás un bloc de notas con un código, dime ese código de la siguiente manera:\n",
         #"👉 `/codigo <numero_codigo>` (ejemplo: `/codigo 198580064`)\n\n",
     )
-    
-    MESSAGE_IMG = (
-        """
-        <div class="message_inline_image">
-            <a href="[URL_IMAGEN]" title="example.png">
-                <img data-original-dimensions="1920x1080"
-                     data-original-content-type="image/png"
-                     src="[URL_IMAGEN]">
-            </a>
-        </div>
-        """
-    )
+
     
     MESSAGE_GENERAL = (
         "Hola [NOMBRE_USUARIO], un gusto saludarte.\n",
