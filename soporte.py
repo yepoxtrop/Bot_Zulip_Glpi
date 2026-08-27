@@ -12,6 +12,9 @@ from models.prioridad import Prioridad;
 from models.urgencia import Urgencia;
 from models.messages import Messages;
 
+# Constantes creadas
+from settings.settings import ZULIP_URL;
+
 class SoporteHandler():
     def usage(self) -> str:
         return """
@@ -345,8 +348,7 @@ class SoporteHandler():
                         
                     content = "".join(map(str, Messages.MESSAGE_RUSDESK_URL_FILE.value));
                     content = content.replace("[URL_ARCHIVO]", list_files[0]);
-                    
-                    content_image = f"![windows.png]({list_files[1]})"
+                    content_image = f"![windows.png]({ZULIP_URL}{list_files[1]})"
                     # bot_handler.send_reply(message, content_image)
                     
                      
