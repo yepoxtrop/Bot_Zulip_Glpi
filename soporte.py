@@ -316,7 +316,7 @@ class SoporteHandler():
                     list_files = []
                     with open("./scripts/code_rustdesk.bat", "rb") as fp:
                         result = client.upload_file(fp);
-                        list_files.append(result["url"]):
+                        list_files.append(result["url"]);
 
                     with open("./media/code_rustdesk/windows.png", "rb") as fp:
                         result = client.upload_file(fp);
