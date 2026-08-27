@@ -348,11 +348,10 @@ class SoporteHandler():
                         
                     content = "".join(map(str, Messages.MESSAGE_RUSDESK_URL_FILE.value));
                     content = content.replace("[URL_ARCHIVO]", list_files[0]);
-                    url_imagen = ZULIP_URL + list_files[1];
-                    content = content.replace("[URL_IMAGEN]", url_imagen);
+                    bot_handler.send_reply(message, content)
                     
-                     
-                    bot_handler.send_reply(message, content);
+                    image_url = ZULIP_URL + list_files[1]
+                    bot_handler.send_reply(message, f"![windows.png]({image_url})")
                     
                     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
                             "name":message["sender_full_name"], 
