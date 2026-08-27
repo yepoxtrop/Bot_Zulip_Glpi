@@ -4,16 +4,16 @@ from zulip_bots.lib import AbstractBotHandler;
 import zulip;
 
 # Funciones creadas
-from database.queries import find_ticket;
+from src.database.queries import find_ticket;
 
 # Modelos creados
-from models.impacto import Impacto;
-from models.prioridad import Prioridad;
-from models.urgencia import Urgencia;
-from models.messages import Messages;
+from src.models.impacto import Impacto;
+from src.models.prioridad import Prioridad;
+from src.models.urgencia import Urgencia;
+from src.models.messages import Messages;
 
 # Constantes creadas
-from settings.settings import ZULIP_URL;
+from src.settings.settings import ZULIP_URL;
 
 class SoporteHandler():
     def usage(self) -> str:
@@ -282,9 +282,8 @@ class SoporteHandler():
                 else:
                     bot_handler.send_reply(message, "Comando no válido, recuerda que las opciones validas son: ");
         
-        # Comando /Ayuda -> Comando principal para:
-        # - Crear casos
-        # - Ofrecer canales de comunicacion
+        # Comando /rustdesk -> Comando principal para:
+        # - Verificar el codigo de rustdesk segun el os
         elif bot_handler.storage.get(f"{message['sender_full_name']}@aciel.co")["process"] == "/rustdesk" or message["full_content"].lower() == "/rustdesk":
             
             # Si el comando no esta inicializado

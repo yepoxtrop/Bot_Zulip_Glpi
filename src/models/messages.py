@@ -1,4 +1,5 @@
 from enum import Enum
+from settings.settings import GLPI_URL, NUMERO_SOPORTE1, NUMERO_SOPORTE2, CORREO_SOPORTE;
 
 class Messages(Enum):
 
@@ -53,30 +54,43 @@ class Messages(Enum):
         "❌ `/No` → Aún no he creado el caso."
     )
     
-    MESSAGE_RUSDESK_OS = (
-        "Indicame tu sistema operativo para conecer tu **Código de Rustdesk**:\n"
-        "- `/Linux` → Si tu sistema es una distro Linux.\n"
-        "- `/Windows` → Si tu sistemas es Windows 10 u 11.\n",
+    MESSAGE_CASO_CHANELS = (
+        "📋 Puedes registrar o consultar tus solicitudes a través de los siguientes canales:\n",
+        f"💻 `GLPI`: {GLPI_URL}\n",
+        f"📱 `WHATSAPP CORPORATIVO 1`: {NUMERO_SOPORTE1}\n",
+        f"📱 `WHATSAPP CORPORATIVO 2`: {NUMERO_SOPORTE1}\n",
+        f"✉️ `CORREO CORPORATIVO`: {CORREO_SOPORTE}\n\n",
+        f"🕒 HORARIOS DE ATENCION\n\n",
+        "SLOGAN"
     )
-    
+
+    MESSAGE_RUSDESK_OS = (
+        "💻 Indícame cuál es tu sistema operativo para ayudarte a obtener tu **ID de RustDesk**:\n\n"
+        "- `/Linux` → Si utilizas una distribución Linux.\n"
+        "- `/Windows` → Si utilizas Windows 10 o Windows 11.\n"
+    )
+
     MESSAGE_RUSDESK_URL_FILE = (
-        "Haz click en la url de abajo para descargar un ejecutable.:\n"
-        "- [Ejecutable_Rustdesk]([URL_ARCHIVO])\n\n"
-        "El código que verás en pantalla es el código de tu rustdesk, como se ve en el ejemplo de abajo.\n"
-        #"[URL_IMAGEN]",
+        "💻 Haz clic en el siguiente enlace para descargar el ejecutable:\n\n"
+        "- [URL_ARCHIVO]\n\n"
+        "📋 Una vez ejecutado, se mostrará tu **ID de RustDesk**.\n"
+        "Puedes guiarte con la siguiente imagen de referencia:\n"
+        #"[URL_IMAGEN]\n\n"
+        #"✅ Cuando tengas el código, envíamelo con el siguiente formato:\n"
+        #"👉 `/codigo <numero_codigo>`\n"
+        #"Ejemplo: `/codigo 198580064`\n\n",
         #"En la pantalla verás un bloc de notas con un código, dime ese código de la siguiente manera:\n",
         #"👉 `/codigo <numero_codigo>` (ejemplo: `/codigo 198580064`)\n\n",
     )
 
-    
     MESSAGE_GENERAL = (
-        "Hola [NOMBRE_USUARIO], un gusto saludarte.\n",
-        "Soy **Tech**, tu asistente de soporte técnico de **Aciel Soluciones Integrales**.\n\n",
-        "Mis funciones son las siguientes:\n",
-        "-`/Ayuda`-> Solcitud de soporte técnico.\n",
-        "-`/Caso`-> Obtener los enlaces para crear casos.\n",
-        "-`/Rustdesk`-> Consulta del id rustdesk.\n",
-        #"-`/Sys`->Solcitud de soporte técnico.\n", # -- Veriones futuras
-        #"-`/Enlaces`-> Solicitud de documentos para la mesa de ayuda.\n", # -- Veriones futuras
-        #"-`/Caso`-> Creacion de caso en glpi.\n", # -- Veriones futuras   
+        "👋 Hola [NOMBRE_USUARIO], un gusto saludarte.\n",
+        "🤖 Soy **Tech**, tu asistente de soporte técnico de **Aciel Soluciones Integrales**.\n\n",
+        "📋 Estas son las opciones disponibles:\n",
+        "- `/Ayuda` → Solicitar soporte técnico.\n",
+        "- `/Caso` → Obtener los enlaces para la creación de casos.\n",
+        "- `/Rustdesk` → Consultar tu ID de RustDesk.\n",
+        #"- `/Sys` → Solicitud de soporte técnico.\n", # -- Veriones futuras
+        #"- `/Enlaces` → Solicitud de documentos para la mesa de ayuda.\n", # -- Veriones futuras
+        #"- `/Caso` → Creacion de caso en glpi.\n", # -- Veriones futuras
     )
