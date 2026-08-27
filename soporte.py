@@ -133,15 +133,26 @@ class SoporteHandler():
                             "subject": "Consulta de Soporte Técnico",
                             "content": f"`@**all** ` Hola compañeros, {message['sender_full_name']} acaba de consultar sobre su ticket, por favor alguno comuniquese con el colaborador para brindarle soporte.",
                         })
+                        
+                        content = "".join(map(str, Messages.MESSAGE_RUSDESK_OS.value));
+                        bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
+                                "name":message["sender_full_name"], 
+                                "email":message["sender_email"],
+                                "process":"/rustdesk", 
+                                "step":"os", 
+                                "is_completed": False
+                            }
+                        );
+                        bot_handler.send_reply(message, content);
 
-                    bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
-                            "name":None, 
-                            "email":None,
-                            "process":None, 
-                            "step":None, 
-                            "is_completed": None
-                        }
-                    );
+                    # bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
+                    #         "name":None, 
+                    #         "email":None,
+                    #         "process":None, 
+                    #         "step":None, 
+                    #         "is_completed": None
+                    #     }
+                    # );
                 elif list_message[0] == "/no":
                     
                     # preguntar si quiere crear el caso
@@ -158,11 +169,7 @@ class SoporteHandler():
                 else:
                     bot_handler.send_reply(message, "Comando no válido, recuerda que las opciones validas son: ");           
             
-            
-            elif bot_handler.storage.get(f"{message['sender_full_name']}@aciel.co")["step"] == "rusdesk":
-                pass
-        
-        # Comando /Ayuda -> Comando principal para:
+        # Comando /caso -> Comando principal para:
         # - Crear casos
         # - Ofrecer canales de comunicacion
         elif bot_handler.storage.get(f"{message['sender_full_name']}@aciel.co")["process"] == "/caso" or message["full_content"].lower() == "/caso":
@@ -271,6 +278,25 @@ class SoporteHandler():
                     )
                 else:
                     bot_handler.send_reply(message, "Comando no válido, recuerda que las opciones validas son: ");
+        
+        # Comando /Ayuda -> Comando principal para:
+        # - Crear casos
+        # - Ofrecer canales de comunicacion
+        elif bot_handler.storage.get(f"{message['sender_full_name']}@aciel.co")["process"] == "/caso" or message["full_content"].lower() == "/caso":
+            
+            # Si el comando no esta inicializado
+            if bot_handler.storage.get(f"{message['sender_full_name']}@aciel.co")["step"] == None:
+                content = "".join(map(str, Messages.MESSAGE_RUSDESK_OS.value));
+                bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
+                        "name":message["sender_full_name"], 
+                        "email":message["sender_email"],
+                        "process":"/rustdesk", 
+                        "step":"os", 
+                        "is_completed": False
+                    }
+                );
+                bot_handler.send_reply(message, content);        
+        
         else:
             print(bot_handler.storage.get("status"));
             content = "".join(map(str, Messages.MESSAGE_GENERAL.value));
