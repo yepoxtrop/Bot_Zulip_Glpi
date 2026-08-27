@@ -345,9 +345,13 @@ class SoporteHandler():
                         
                     content = "".join(map(str, Messages.MESSAGE_RUSDESK_URL_FILE.value));
                     content = content.replace("[URL_ARCHIVO]", list_files[0]);
-                    content = content.replace("[URL_IMAGEN]", f"\"{list_files[1]}\"");
+                    
+                    content_image = "".join(map(str, Messages.MESSAGE_IMG.value));
+                    content_image = content_image.replace("[URL_IMAGEN]", f"\"{list_files[1]}\"");
                      
-                    bot_handler.send_reply(message, "".join(map(str, content)));
+                    bot_handler.send_reply(message, content);
+                    bot_handler.send_reply(message, content_image);
+                    
                     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
                             "name":message["sender_full_name"], 
                             "email":message["sender_email"],

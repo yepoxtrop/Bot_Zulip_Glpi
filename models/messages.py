@@ -68,6 +68,18 @@ class Messages(Enum):
         #"👉 `/codigo <numero_codigo>` (ejemplo: `/codigo 198580064`)\n\n",
     )
     
+    MESSAGE_IMG = (
+        """
+        <div class="message_inline_image">
+            <a href=[URL_IMAGEN] title="example.png">
+                <img data-original-dimensions="1920x1080"
+                    data-original-content-type="image/png"
+                src=[URL_IMAGEN]>
+            </a>
+        </div>
+        """
+    )
+    
     MESSAGE_GENERAL = (
         "Hola [NOMBRE_USUARIO], un gusto saludarte.\n",
         "Soy **Tech**, tu asistente de soporte técnico de **Aciel Soluciones Integrales**.\n\n",
