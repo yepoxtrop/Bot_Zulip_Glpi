@@ -63,7 +63,7 @@ class Messages(Enum):
         "Haz click en la url de abajo para descargar un ejecutable.:\n"
         "- [Ejecutable_Rustdesk]([URL_ARCHIVO])\n\n"
         "El código que verás en pantalla es el código de tu rustdesk, como se ve en el ejemplo de abajo.\n"
-        "[URL_IMAGEN]",
+        #"[URL_IMAGEN]",
         #"En la pantalla verás un bloc de notas con un código, dime ese código de la siguiente manera:\n",
         #"👉 `/codigo <numero_codigo>` (ejemplo: `/codigo 198580064`)\n\n",
     )
