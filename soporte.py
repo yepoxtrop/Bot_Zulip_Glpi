@@ -348,20 +348,11 @@ class SoporteHandler():
                         
                     content = "".join(map(str, Messages.MESSAGE_RUSDESK_URL_FILE.value));
                     content = content.replace("[URL_ARCHIVO]", list_files[0]);
-                    bot_handler.send_reply(message, content)
+                    url_imagen = ZULIP_URL + list_files[1];
+                    content = content.replace("[URL_IMAGEN]", url_imagen);
                     
-                    print(message)
-                    image_url = ZULIP_URL + list_files[1]
-                    html_content = f'<div class="message_inline_image"><a href="{image_url}" title="windows.png"><img src="{image_url}" alt="windows.png"></a></div>'
-                    recipient_ids = [user['id'] for user in message['display_recipient']]
-                    html_message = {
-                        "type": "private",
-                        "to": recipient_ids,
-                        "content": html_content,
-                        "content_type": "text/html"
-                    }
-                    client.send_message(html_message)
-                    print(client.send_message(html_message))
+                     
+                    bot_handler.send_reply(message, content);
                     
                     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
                             "name":message["sender_full_name"], 
