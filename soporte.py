@@ -273,7 +273,7 @@ class SoporteHandler():
                     bot_handler.send_reply(message, "Comando no válido, recuerda que las opciones validas son: ");
         else:
             print(bot_handler.storage.get("status"));
-            content = "".join(map(src, Messages.MESSAGE_GENERAL.value));
+            content = "".join(map(str, Messages.MESSAGE_GENERAL.value));
             content = content.replace("[NOMBRE_USUARIO]", message["sender_full_name"]);
             bot_handler.send_reply(message, content);
 
