@@ -44,3 +44,11 @@ class Messages(Enum):
         # "- `Id Técnicos:`", # - Informacion que trae la consulta, pero no tan relevante para el usuario
         "- `Técnicos:` [TECNICOS] \n"
     )
+    
+    MESSAGE_CASO_WELCOME = (
+        "Hola, soy **Tech**, tu asistente de soporte técnico.\n",
+        "Vamos a crear un caso en el **Helpdesk**, donde se genera un **ID de caso**.\n\n",
+        "¿Quieres crear tu caso en Helpdesk? Selecciona una opción:\n",
+        "✅ `/Si` → Ya tengo un ID de caso.\n",
+        "❌ `/No` → Aún no he creado el caso."
+    )
