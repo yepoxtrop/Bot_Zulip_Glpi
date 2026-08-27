@@ -15,4 +15,4 @@ notepad %TEMP%\Codigo_Rustdesk.txt
 :: Copy rustdesk code to clipboard
 rustdesk.exe --get-id | more | clip
 
-::pause
+:: If you are a customer, why are you here?, Ge out
