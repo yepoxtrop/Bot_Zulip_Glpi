@@ -350,6 +350,7 @@ class SoporteHandler():
                     content = content.replace("[URL_ARCHIVO]", list_files[0]);
                     bot_handler.send_reply(message, content)
                     
+                    print(message)
                     image_url = ZULIP_URL + list_files[1]
                     html_content = f'<div class="message_inline_image"><a href="{image_url}" title="windows.png"><img src="{image_url}" alt="windows.png"></a></div>'
 
