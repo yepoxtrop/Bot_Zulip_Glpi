@@ -303,7 +303,7 @@ class SoporteHandler():
 
                 # Si la respuesta es '/windows'
                 # Se hace una petición a al api de zulip, se carga el archivo y se envia atachado
-                if message["full_content"].lower() == "/windwos":
+                if message["full_content"].lower() == "/windows":
                     
                     # Pass the path to your zuliprc file here.
                     client = zulip.Client(config_file="./zuliprc")
@@ -312,8 +312,11 @@ class SoporteHandler():
                     with open("./scripts/code_rustdesk.bat", "rb") as fp:
                         result = client.upload_file(fp);
                         print(result)
-                    
-                    bot_handler.send_reply(message, "".join(map(str, Messages.MESSAGE_AYUDA_TICKET_YES.value)));
+                        
+                        content = "".join(map(str, Messages.MESSAGE_RUSDESK_URL_FILE.value));
+                        content = content.replace("[URL_ARCHIVO]", result["url"]);
+                        
+                        bot_handler.send_reply(message, "".join(map(str, content)));
                     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
                             "name":message["sender_full_name"], 
                             "email":message["sender_email"],

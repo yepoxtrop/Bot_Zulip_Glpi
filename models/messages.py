@@ -59,6 +59,13 @@ class Messages(Enum):
         "- `/Windows` → Si tu sistemas es Windows 10 u 11.\n",
     )
     
+    MESSAGE_RUSDESK_URL_FILE = (
+        "Haz click en la url de abajo para descargar un ejecutable.:\n"
+        "- [Ejecutable_Rustdesk]([URL_ARCHIVO])\n\n"
+        "En la pantalla verás un bloc de notas con un código, dime ese código de la siguiente manera:\n",
+        "👉 `/codigo <numero_codigo>` (ejemplo: `/codigo 198580064`)\n\n",
+    )
+    
     MESSAGE_GENERAL = (
         "Hola [NOMBRE_USUARIO], un gusto saludarte.\n",
         "Soy **Tech**, tu asistente de soporte técnico de **Aciel Soluciones Integrales**.\n\n",
