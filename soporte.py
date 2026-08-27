@@ -332,13 +332,22 @@ class SoporteHandler():
                     client = zulip.Client(config_file="./zuliprc");
 
                     # Upload a file.
+                    # 0 -> url bat
+                    # 1 -> url image bat
+                    list_files = []
                     with open("./scripts/code_rustdesk.sh", "rb") as fp:
                         result = client.upload_file(fp);
+                        list_files.append(result["url"])
                         
-                        content = "".join(map(str, Messages.MESSAGE_RUSDESK_URL_FILE.value));
-                        content = content.replace("[URL_ARCHIVO]", result["url"]);
+                    with open("./media/code_rustdesk/windows.png", "rb") as fp:
+                        result = client.upload_file(fp);
+                        list_files.append(result["url"])
                         
-                        bot_handler.send_reply(message, "".join(map(str, content)));
+                    content = "".join(map(str, Messages.MESSAGE_RUSDESK_URL_FILE.value));
+                    content = content.replace("[URL_ARCHIVO]", list_files[0]);
+                    content = content.replace("[URL_IMAGEN]", list_files[1]);
+                        
+                    bot_handler.send_reply(message, "".join(map(str, content)));
                     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
                             "name":message["sender_full_name"], 
                             "email":message["sender_email"],
