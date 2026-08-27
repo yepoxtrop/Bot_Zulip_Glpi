@@ -348,9 +348,17 @@ class SoporteHandler():
                     
                     content_image = "".join(map(str, Messages.MESSAGE_IMG.value));
                     content_image = content_image.replace("[URL_IMAGEN]", list_files[1]);
+                    message_to_send = {
+                        'type': 'stream',
+                        'to': message['display_recipient'],
+                        'subject': message['subject'],
+                        'content': content_image,
+                        'content_type': 'text/html'
+                    }
+                    
                      
                     bot_handler.send_reply(message, content);
-                    bot_handler.send_reply(message, content_image, content_type='text/html');
+                    bot_handler.send_reply(message, message_to_send);
                     
                     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
                             "name":message["sender_full_name"], 
