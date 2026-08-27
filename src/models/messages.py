@@ -1,5 +1,5 @@
 from enum import Enum
-from settings.settings import GLPI_URL, NUMERO_SOPORTE1, NUMERO_SOPORTE2, CORREO_SOPORTE;
+from src.settings.settings import GLPI_URL, NUMERO_SOPORTE1, NUMERO_SOPORTE2, CORREO_SOPORTE;
 
 class Messages(Enum):
 
