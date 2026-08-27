@@ -306,12 +306,11 @@ class SoporteHandler():
                 if message["full_content"].lower() == "/windows":
                     
                     # Pass the path to your zuliprc file here.
-                    client = zulip.Client(config_file="./zuliprc")
+                    client = zulip.Client(config_file="./zuliprc");
 
                     # Upload a file.
                     with open("./scripts/code_rustdesk.bat", "rb") as fp:
                         result = client.upload_file(fp);
-                        print(result)
                         
                         content = "".join(map(str, Messages.MESSAGE_RUSDESK_URL_FILE.value));
                         content = content.replace("[URL_ARCHIVO]", result["url"]);
@@ -320,24 +319,34 @@ class SoporteHandler():
                     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
                             "name":message["sender_full_name"], 
                             "email":message["sender_email"],
-                            "process":"/rustdesk", 
-                            "step":"id_rustdesk", 
+                            "process":None, 
+                            "step":None, 
                             "is_completed": False
                         }
                     );
 
-                # Si la respuesta es '/no', se le pregunta si quiere crear un caso
-                # Se cambia el step a 'crear_ticker'
+                # Si la respuesta es '/windows'
+                # Se hace una petición a al api de zulip, se carga el archivo y se envia atachado
                 elif message["full_content"] == "/no":
-                    bot_handler.send_reply(message, "".join(map(str, Messages.MESSAGE_AYUDA_TICKET_NO.value)));
+                    # Pass the path to your zuliprc file here.
+                    client = zulip.Client(config_file="./zuliprc");
+
+                    # Upload a file.
+                    with open("./scripts/code_rustdesk.sh", "rb") as fp:
+                        result = client.upload_file(fp);
+                        
+                        content = "".join(map(str, Messages.MESSAGE_RUSDESK_URL_FILE.value));
+                        content = content.replace("[URL_ARCHIVO]", result["url"]);
+                        
+                        bot_handler.send_reply(message, "".join(map(str, content)));
                     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
                             "name":message["sender_full_name"], 
                             "email":message["sender_email"],
-                            "process":"/ayuda", 
-                            "step":"crear_ticket", 
+                            "process":None, 
+                            "step":None, 
                             "is_completed": False
                         }
-                    )
+                    );
                 else :
                     bot_handler.send_reply(message, "Comando no válido, recuerda que las opciones validas son: ");
         
