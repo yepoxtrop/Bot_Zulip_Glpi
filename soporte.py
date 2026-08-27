@@ -1,7 +1,7 @@
 # See readme.md for instructions on running this code.
-
 from typing import Any, Dict
-from zulip_bots.lib import AbstractBotHandler
+from zulip_bots.lib import AbstractBotHandler;
+import zulip;
 
 # Funciones creadas
 from database.queries import find_ticket;
@@ -282,7 +282,7 @@ class SoporteHandler():
         # Comando /Ayuda -> Comando principal para:
         # - Crear casos
         # - Ofrecer canales de comunicacion
-        elif bot_handler.storage.get(f"{message['sender_full_name']}@aciel.co")["process"] == "/caso" or message["full_content"].lower() == "/caso":
+        elif bot_handler.storage.get(f"{message['sender_full_name']}@aciel.co")["process"] == "/rustdesk" or message["full_content"].lower() == "/rustdesk":
             
             # Si el comando no esta inicializado
             if bot_handler.storage.get(f"{message['sender_full_name']}@aciel.co")["step"] == None:
@@ -295,7 +295,48 @@ class SoporteHandler():
                         "is_completed": False
                     }
                 );
-                bot_handler.send_reply(message, content);        
+                bot_handler.send_reply(message, content);     
+                   
+            # Si esta activo el proceso de 'os'
+            # Se pregunta al usuario si tiene un caso activo
+            elif bot_handler.storage.get(f"{message['sender_full_name']}@aciel.co")["step"] == "os":
+
+                # Si la respuesta es '/windows'
+                # Se hace una petición a al api de zulip, se carga el archivo y se envia atachado
+                if message["full_content"].lower() == "/windwos":
+                    
+                    # Pass the path to your zuliprc file here.
+                    client = zulip.Client(config_file="~/zuliprc")
+
+                    # Upload a file.
+                    with open("./scripts/code_rustdesk.bat", "rb") as fp:
+                        result = client.upload_file(fp);
+                        print(result)
+                    
+                    bot_handler.send_reply(message, "".join(map(str, Messages.MESSAGE_AYUDA_TICKET_YES.value)));
+                    bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
+                            "name":message["sender_full_name"], 
+                            "email":message["sender_email"],
+                            "process":"/rustdesk", 
+                            "step":"id_rustdesk", 
+                            "is_completed": False
+                        }
+                    );
+
+                # Si la respuesta es '/no', se le pregunta si quiere crear un caso
+                # Se cambia el step a 'crear_ticker'
+                elif message["full_content"] == "/no":
+                    bot_handler.send_reply(message, "".join(map(str, Messages.MESSAGE_AYUDA_TICKET_NO.value)));
+                    bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
+                            "name":message["sender_full_name"], 
+                            "email":message["sender_email"],
+                            "process":"/ayuda", 
+                            "step":"crear_ticket", 
+                            "is_completed": False
+                        }
+                    )
+                else :
+                    bot_handler.send_reply(message, "Comando no válido, recuerda que las opciones validas son: ");
         
         else:
             print(bot_handler.storage.get("status"));
