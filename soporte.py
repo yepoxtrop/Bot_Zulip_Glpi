@@ -309,16 +309,27 @@ class SoporteHandler():
                 if message["full_content"].lower() == "/windows":
                     
                     # Pass the path to your zuliprc file here.
-                    client = zulip.Client(config_file="./zuliprc");
-
+                    client = zulip.Client(config_file="./zuliprc"); 
                     # Upload a file.
+                    # 0 -> url bat
+                    # 1 -> url image bat
+                    list_files = []
                     with open("./scripts/code_rustdesk.bat", "rb") as fp:
                         result = client.upload_file(fp);
-                        
-                        content = "".join(map(str, Messages.MESSAGE_RUSDESK_URL_FILE.value));
-                        content = content.replace("[URL_ARCHIVO]", result["url"]);
-                        
-                        bot_handler.send_reply(message, "".join(map(str, content)));
+                        list_files.append(result["url"]):
+
+                    with open("./media/code_rustdesk/windows.png", "rb") as fp:
+                        result = client.upload_file(fp);
+                        list_files.append(result["url"]);
+
+                    content = "".join(map(str, Messages.MESSAGE_RUSDESK_URL_FILE.value));
+                    #content = content.replace("[URL_ARCHIVO]", list_files[0]);
+                    image_url = ZULIP_URL + list_files[1];
+
+
+                    bot_handler.send_reply(message, content);
+                    bot_handler.send_reply(message, image_url);
+
                     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
                             "name":message["sender_full_name"], 
                             "email":message["sender_email"],
@@ -327,7 +338,6 @@ class SoporteHandler():
                             "is_completed": False
                         }
                     );
-
                 # Si la respuesta es '/windows'
                 # Se hace una petición a al api de zulip, se carga el archivo y se envia atachado
                 elif message["full_content"].lower() == "/linux":
@@ -348,12 +358,11 @@ class SoporteHandler():
                         
                     content = "".join(map(str, Messages.MESSAGE_RUSDESK_URL_FILE.value));
                     #content = content.replace("[URL_ARCHIVO]", list_files[0]);
-                    url_imagen = ZULIP_URL + list_files[1];
-                    # content = content.replace("[URL_IMAGEN]", url_imagen);
+                    image_url = ZULIP_URL + list_files[1];
                     
                      
                     bot_handler.send_reply(message, content);
-                    bot_handler.send_reply(message, url_imagen);
+                    bot_handler.send_reply(message, image_url);
                     
                     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
                             "name":message["sender_full_name"], 
