@@ -55,7 +55,7 @@ class SoporteHandler():
             # Si el comando no esta inicializado
             if bot_handler.storage.get(f"{message['sender_full_name']}@aciel.co")["step"] == None:
                 content = "".join(map(str, Messages.MESSAGE_AYUDA_WELCOME.value));
-                status_dict = bot_handler.storage.get("status");
+                
                 bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
                         "name":message["sender_full_name"], 
                         "email":message["sender_email"],
@@ -157,6 +157,10 @@ class SoporteHandler():
                     )
                 else:
                     bot_handler.send_reply(message, "Comando no válido, recuerda que las opciones validas son: ");           
+            
+            
+            elif bot_handler.storage.get(f"{message['sender_full_name']}@aciel.co")["step"] == "rusdesk":
+                pass
         
         # Comando /Ayuda -> Comando principal para:
         # - Crear casos
@@ -269,7 +273,8 @@ class SoporteHandler():
                     bot_handler.send_reply(message, "Comando no válido, recuerda que las opciones validas son: ");
         else:
             print(bot_handler.storage.get("status"));
-            content = f"Hola {message['sender_full_name']} , soy **Tech**, el asistente de soporte técnico de **Aciel Soluciones Integrales**.\nMis funciones son las siguientes:\n`/Ayuda`->Solcitud de soporte técnico.";
+            content = "".join(map(src, Messages.MESSAGE_GENERAL.value));
+            content = content.replace("[NOMBRE_USUARIO]", message["sender_full_name"]);
             bot_handler.send_reply(message, content);
 
 

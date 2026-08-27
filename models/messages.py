@@ -52,3 +52,23 @@ class Messages(Enum):
         "✅ `/Si` → Ya tengo un ID de caso.\n",
         "❌ `/No` → Aún no he creado el caso."
     )
+    
+    MESSAGE_RUSDESK_OS = (
+        "Indicame tu sistema operativo para conecer tu **Código de Rustdesk**:\n"
+        "🐧 `/Linux` → Si tu sistema es una distro Linux."
+        "🪟 `/Windows` → Si tu sistemas es Windows 10 u 11.\n",
+    )
+    
+    MESSAGE_GENERAL = (
+        "Hola [NOMBRE_USUARIO], un gusto saludarte.\n",
+        "Soy **Tech**, tu asistente de soporte técnico de **Aciel Soluciones Integrales**.\n\n",
+        "Mis funciones son las siguientes:\n",
+        "-`/Ayuda`-> Solcitud de soporte técnico.\n",
+        "-`/Caso`-> Obtener los enlaces para crear casos.\n",
+        "-`/Rustdesk`-> Consulta del id rustdesk.\n",
+        #"-`/Sys`->Solcitud de soporte técnico.\n", # -- Veriones futuras
+        #"-`/Enlaces`-> Solicitud de documentos para la mesa de ayuda.\n", # -- Veriones futuras
+        #"-`/Caso`-> Creacion de caso en glpi.\n", # -- Veriones futuras
+        
+    )
+    
