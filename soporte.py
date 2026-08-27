@@ -323,7 +323,7 @@ class SoporteHandler():
                         list_files.append(result["url"]);
 
                     content = "".join(map(str, Messages.MESSAGE_RUSDESK_URL_FILE.value));
-                    #content = content.replace("[URL_ARCHIVO]", list_files[0]);
+                    content = content.replace("[URL_ARCHIVO]", list_files[0]);
                     image_url = ZULIP_URL + list_files[1];
 
 
