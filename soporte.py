@@ -351,7 +351,13 @@ class SoporteHandler():
                     bot_handler.send_reply(message, content)
                     
                     image_url = ZULIP_URL + list_files[1]
-                    bot_handler.send_reply(message, f"![windows.png]({image_url})")
+                    image_message = {
+                        "type": "stream",
+                        "to": message["display_recipient"],
+                        "subject": message["subject"],
+                        "content": f"![windows.png]({image_url})"
+                    }
+                    client.send_message(image_message)
                     
                     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
                             "name":message["sender_full_name"], 
