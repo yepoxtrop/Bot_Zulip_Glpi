@@ -306,7 +306,7 @@ class SoporteHandler():
                 if message["full_content"].lower() == "/windwos":
                     
                     # Pass the path to your zuliprc file here.
-                    client = zulip.Client(config_file="~/zuliprc")
+                    client = zulip.Client(config_file="./zuliprc")
 
                     # Upload a file.
                     with open("./scripts/code_rustdesk.bat", "rb") as fp:
