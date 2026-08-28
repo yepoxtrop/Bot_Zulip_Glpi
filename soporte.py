@@ -89,12 +89,12 @@ class SoporteHandler():
                 # Si la respuesta es '/no', se le pregunta si quiere crear un caso
                 # Se cambia el step a 'crear_ticker'
                 elif message["full_content"] == "/no":
-                    bot_handler.send_reply(message, "".join(map(str, Messages.MESSAGE_AYUDA_TICKET_NO.value)));
+                    # bot_handler.send_reply(message, "".join(map(str, Messages.MESSAGE_AYUDA_TICKET_NO.value)));
                     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
                             "name":message["sender_full_name"], 
                             "email":message["sender_email"],
-                            "process":"/ayuda", 
-                            "step":"crear_ticket", 
+                            "process":"/caso", 
+                            "step":"caso", 
                             "is_completed": False
                         }
                     )
