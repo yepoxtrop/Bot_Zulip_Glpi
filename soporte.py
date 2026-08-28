@@ -147,6 +147,7 @@ class SoporteHandler():
                             bot_handler.send_reply(message, content);
                             
                     except Exception as e:
+                        print(e)
                         bot_handler.send_reply(message, "No se pudo realizar correctamente la consulta");
 
                 else:
