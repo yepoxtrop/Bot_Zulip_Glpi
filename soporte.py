@@ -118,10 +118,42 @@ class SoporteHandler():
                             menssage_final = "".join(map(str, Messages.MESSAGE_INFO_TICKET.value))
                             menssage_final = menssage_final.replace("[ID_TICKET]", str(info_ticket[0][0]));
                             menssage_final = menssage_final.replace("[TITULO_TICKET]", str(info_ticket[0][1]));
-                            menssage_final = menssage_final.replace("[PRIORIDAD]", str(info_ticket[0][3]));
+                            if info_ticket[0][2] == 1: 
+                                menssage_final = menssage_final.replace("[URGENCIA]", "Muy Alta");
+                            elif info_ticket[0][2] == 2: 
+                                menssage_final = menssage_final.replace("[URGENCIA]", "Alta");                        
+                            elif info_ticket[0][2] == 3: 
+                                menssage_final = menssage_final.replace("[URGENCIA]", "Mediana");
+                            elif info_ticket[0][2] == 4: 
+                                menssage_final = menssage_final.replace("[URGENCIA]", "Baja");
+                            elif info_ticket[0][2] == 5: 
+                                menssage_final = menssage_final.replace("[URGENCIA]", "Muy Baja");                                   
+                            #menssage_final = menssage_final.replace("[PRIORIDAD]", str(info_ticket[0][3]));
                             menssage_final = menssage_final.replace("[CATEGORIA]", str(info_ticket[0][4]));
+                            if info_ticket[0][4] == 1: 
+                                menssage_final = menssage_final.replace("[PRIORIDAD]", "Muy Alta");
+                            elif info_ticket[0][4] == 2: 
+                                menssage_final = menssage_final.replace("[PRIORIDAD]", "Alta");                        
+                            elif info_ticket[0][4] == 3: 
+                                menssage_final = menssage_final.replace("[PRIORIDAD]", "Mediana");
+                            elif info_ticket[0][4] == 4: 
+                                menssage_final = menssage_final.replace("[PRIORIDAD]", "Baja");
+                            elif info_ticket[0][4] == 5: 
+                                menssage_final = menssage_final.replace("[PRIORIDAD]", "Muy Baja");
                             menssage_final = menssage_final.replace("[ENTIDAD]", str(info_ticket[0][5]));
-                            menssage_final = menssage_final.replace("[ESTADO]", str(info_ticket[0][6]));
+                            # menssage_final = menssage_final.replace("[ESTADO]", str(info_ticket[0][6]));
+                            if info_ticket[0][6] == 1: 
+                                menssage_final = menssage_final.replace("[ESTADO]", "En curso");
+                            elif info_ticket[0][6] == 2: 
+                                menssage_final = menssage_final.replace("[ESTADO]", "En curso(Asignado)");                        
+                            elif info_ticket[0][6] == 3: 
+                                menssage_final = menssage_final.replace("[ESTADO]", "En espera");
+                            elif info_ticket[0][6] == 4: 
+                                menssage_final = menssage_final.replace("[ESTADO]", "En curso");
+                            elif info_ticket[0][6] == 5: 
+                                menssage_final = menssage_final.replace("[ESTADO]", "Resuelto");
+                            elif info_ticket[0][6] == 6: 
+                                menssage_final = menssage_final.replace("[ESTADO]", "CERRADO");                                
                             menssage_final = menssage_final.replace("[SOLICITANTES]", str(info_ticket[0][7]));
                             menssage_final = menssage_final.replace("[CATEGORIA_TICKET]", str(info_ticket[0][8]));
                             menssage_final = menssage_final.replace("[TECNICOS]", str(info_ticket[0][10]));
