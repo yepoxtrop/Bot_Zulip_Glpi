@@ -31,6 +31,7 @@ class Messages(Enum):
     
     MESSAGE_INFO_TICKET = (
         "- `Id Ticket:` [ID_TICKET] \n",
+        "- `Estado:` [ESTADO] \n",
         "- `Titulo Ticket:` [TITULO_TICKET] \n",
         "- `Urgencia:` [URGENCIA]\n", # - Informacion que trae la consulta, pero no tan relevante para el usuario
         #"- `Impacto:` [IMPACTO] \n",
