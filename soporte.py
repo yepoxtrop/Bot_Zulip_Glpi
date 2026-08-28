@@ -45,7 +45,7 @@ class SoporteHandler():
                     "is_completed": None
                 }
             );
-        print(bot_handler.storage.get(f"{message['sender_full_name']}@aciel.co")["step"]);
+        # print(bot_handler.storage.get(f"{message['sender_full_name']}@aciel.co")["step"]);
 
         # Validacion de los comandos para el bot
         # Comando /Ayuda -> Comando principal para:
@@ -88,12 +88,12 @@ class SoporteHandler():
 
                 # Si la respuesta es '/no', se le pregunta si quiere crear un caso
                 # Se cambia el step a 'crear_ticker'
-                elif message["full_content"] == "/no":
-                    # bot_handler.send_reply(message, "".join(map(str, Messages.MESSAGE_AYUDA_TICKET_NO.value)));
+                elif message["full_content"].lower() == "/no":
+                    bot_handler.send_reply(message, "".join(map(str, Messages.MESSAGE_CASO_CHANELS.value)));
                     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
                             "name":message["sender_full_name"], 
                             "email":message["sender_email"],
-                            "process":"/caso", 
+                            "process":None, 
                             "step":None, 
                             "is_completed": False
                         }
