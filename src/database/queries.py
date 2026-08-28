@@ -24,7 +24,7 @@ def find_ticket(id_ticket:int):
     		glpi_tickets.impact AS `impacto`,
 	    	glpi_tickets.priority AS `prioridad`, 
     		glpi_entities.name AS `entidad`,
-    		glpi_entities.status AS `estado`,
+    		glpi_tickets.status AS `estado`,
 	    	CONCAT(glpi_users.firstname, " ", glpi_users.realname) AS `autor`,
     		glpi_itilcategories.name AS `categoria`,
     		(SELECT GROUP_CONCAT(glpi_users.id)
