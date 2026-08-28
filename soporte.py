@@ -32,7 +32,7 @@ class SoporteHandler():
 
             # Almacenamiento de clave de usuario nombre@DOMINIO_CORPORATIVO
             bot_handler.storage.put(
-                f"{message['sender_full_name']}@{{DOMINIO_CORPORATIVO}}", {
+                f"{message['sender_full_name']}@{DOMINIO_CORPORATIVO}", {
                     "name":message["sender_full_name"], 
                     "email":message["sender_email"],
                     "process": None, 
