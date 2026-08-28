@@ -55,7 +55,7 @@ class Messages(Enum):
     )
     
     MESSAGE_CASO_CHANELS = (
-        "📋 Puedes registrar o consultar tus solicitudes a través de los siguientes canales:\n",
+        "Puedes registrar o consultar tus solicitudes a través de los siguientes canales:\n",
         f"💻 `GLPI`: {GLPI_URL}\n",
         f"📱 `WHATSAPP CORPORATIVO 1`: {NUMERO_SOPORTE1}\n",
         f"📱 `WHATSAPP CORPORATIVO 2`: {NUMERO_SOPORTE2}\n",

@@ -156,24 +156,24 @@ class SoporteHandler():
                     #         "is_completed": None
                     #     }
                     # );
-                elif list_message[0] == "/no":
+                # elif list_message[0] == "/no":
                     
-                    # preguntar si quiere crear el caso
-                    # cambiar a comando /caso
-                    bot_handler.send_reply(message, "".join(map(str, Messages.MESSAGE_AYUDA_TICKET_NO.value)));
-                    bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
-                            "name":message["sender_full_name"], 
-                            "email":message["sender_email"],
-                            "process":"/caso", 
-                            "step":"caso", 
-                            "is_completed": False
-                        }
-                    )
+                #     # preguntar si quiere crear el caso
+                #     # cambiar a comando /caso
+                #     bot_handler.send_reply(message, "".join(map(str, Messages.MESSAGE_AYUDA_TICKET_NO.value)));
+                #     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
+                #             "name":message["sender_full_name"], 
+                #             "email":message["sender_email"],
+                #             "process":"/caso", 
+                #             "step":"caso", 
+                #             "is_completed": False
+                #         }
+                #     )
                 else:
                     bot_handler.send_reply(message, "Comando no válido, recuerda que las opciones validas son: ");           
             
         # Comando /caso -> Comando principal para:
-        # - Crear casos
+        # - Crear casos - Para versiones posteriores
         # - Ofrecer canales de comunicacion
         elif bot_handler.storage.get(f"{message['sender_full_name']}@aciel.co")["process"] == "/caso" or message["full_content"].lower() == "/caso":
             
@@ -232,11 +232,11 @@ class SoporteHandler():
                     # 0 -> url bat
                     # 1 -> url image bat
                     list_files = []
-                    with open("./scripts/code_rustdesk.bat", "rb") as fp:
+                    with open("./src/scripts/code_rustdesk.bat", "rb") as fp:
                         result = client.upload_file(fp);
                         list_files.append(result["url"]);
 
-                    with open("./media/code_rustdesk/windows.png", "rb") as fp:
+                    with open("./src/media/code_rustdesk/windows.png", "rb") as fp:
                         result = client.upload_file(fp);
                         list_files.append(result["url"]);
 
@@ -266,11 +266,11 @@ class SoporteHandler():
                     # 0 -> url bat
                     # 1 -> url image bat
                     list_files = []
-                    with open("./scripts/code_rustdesk.sh", "rb") as fp:
+                    with open("./src/scripts/code_rustdesk.sh", "rb") as fp:
                         result = client.upload_file(fp);
                         list_files.append(result["url"])
                         
-                    with open("./media/code_rustdesk/windows.png", "rb") as fp:
+                    with open("./src/media/code_rustdesk/windows.png", "rb") as fp:
                         result = client.upload_file(fp);
                         list_files.append(result["url"])
                         
