@@ -100,3 +100,5 @@ class Messages(Enum):
         #"- `/Enlaces` → Solicitud de documentos para la mesa de ayuda.\n", # -- Veriones futuras
         #"- `/Caso` → Creacion de caso en glpi.\n", # -- Veriones futuras
     )
+    
+print(GLPI_URL)
