@@ -14,9 +14,7 @@ class Messages(Enum):
     MESSAGE_AYUDA_TICKET = (
         "Perfecto. Para continuar, necesito el **ID de tu ticket**.\n\n",
         "Por favor, envíalo con el siguiente formato:\n",
-        "👉 `/Si <numero_ticket>` (ejemplo: `/Si 4168`)\n\n",
-        "Si no tienes el ID disponible, escribe:\n",
-        "👉 `/No`"
+        "👉 `/<numero_ticket>` (ejemplo: `/4168`)\n\n",
     )
 
     MESSAGE_AYUDA_TICKET_YES = (

@@ -99,8 +99,8 @@ class SoporteHandler():
             # Se pregunta al usuario si tiene el id del caso
             elif bot_handler.storage.get(f"{message['sender_full_name']}@aciel.co")["step"] == "id_ticket":
                 
-                list_message = message["full_content"].split(" ");
-                if len(list_message) == 2 and list_message[0].lower() == "/si":
+                list_message = message["full_content"].split("/");
+                if len(list_message) == 2 and list_message[0].lower() == "/":
                     
                     bot_handler.send_reply(message, "Se esta consultando el ticket");
                     info_ticket = find_ticket(int(list_message[1]));
@@ -150,19 +150,6 @@ class SoporteHandler():
                     #         "is_completed": None
                     #     }
                     # );
-                # elif list_message[0] == "/no":
-                    
-                #     # preguntar si quiere crear el caso
-                #     # cambiar a comando /caso
-                #     bot_handler.send_reply(message, "".join(map(str, Messages.MESSAGE_AYUDA_TICKET_NO.value)));
-                #     bot_handler.storage.put(f"{message['sender_full_name']}@aciel.co", {
-                #             "name":message["sender_full_name"], 
-                #             "email":message["sender_email"],
-                #             "process":"/caso", 
-                #             "step":"caso", 
-                #             "is_completed": False
-                #         }
-                #     )
                 else:
                     bot_handler.send_reply(message, "Comando no válido, recuerda que las opciones validas son: ");           
             
