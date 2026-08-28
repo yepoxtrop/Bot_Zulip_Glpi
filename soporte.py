@@ -114,7 +114,7 @@ class SoporteHandler():
                         if (info_ticket == []):
                             bot_handler.send_reply(message, "Ticket no encontrado");
                         else:
-
+                            print(info_ticket)
                             menssage_final = "".join(map(str, Messages.MESSAGE_INFO_TICKET.value))
                             menssage_final = menssage_final.replace("[ID_TICKET]", str(info_ticket[0][0]));
                             menssage_final = menssage_final.replace("[TITULO_TICKET]", info_ticket[0][1]);
