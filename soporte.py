@@ -101,7 +101,7 @@ class SoporteHandler():
                 
                 list_message = message["full_content"].split("/");
                 print(list_message)
-                if len(list_message) == 2 and list_message[0].lower() == "/":
+                if len(list_message) == 2 and list_message[0].lower() == "":
                     
                     bot_handler.send_reply(message, "Se esta consultando el ticket");
                     info_ticket = find_ticket(int(list_message[1]));
