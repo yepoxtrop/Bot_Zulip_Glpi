@@ -94,7 +94,7 @@ class SoporteHandler():
                             "name":message["sender_full_name"], 
                             "email":message["sender_email"],
                             "process":"/caso", 
-                            "step":"caso", 
+                            "step":None, 
                             "is_completed": False
                         }
                     )
@@ -294,7 +294,6 @@ class SoporteHandler():
                     bot_handler.send_reply(message, "Comando no válido, recuerda que las opciones validas son: ");
         
         else:
-            print(bot_handler.storage.get("status"));
             content = "".join(map(str, Messages.MESSAGE_GENERAL.value));
             content = content.replace("[NOMBRE_USUARIO]", message["sender_full_name"]);
             bot_handler.send_reply(message, content);
