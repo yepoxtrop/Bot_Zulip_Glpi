@@ -117,14 +117,14 @@ class SoporteHandler():
                             print(info_ticket)
                             menssage_final = "".join(map(str, Messages.MESSAGE_INFO_TICKET.value))
                             menssage_final = menssage_final.replace("[ID_TICKET]", str(info_ticket[0][0]));
-                            menssage_final = menssage_final.replace("[TITULO_TICKET]", info_ticket[0][1]);
+                            menssage_final = menssage_final.replace("[TITULO_TICKET]", str(info_ticket[0][1]));
                             menssage_final = menssage_final.replace("[PRIORIDAD]", str(info_ticket[0][3]));
                             menssage_final = menssage_final.replace("[CATEGORIA]", str(info_ticket[0][4]));
-                            menssage_final = menssage_final.replace("[ENTIDAD]", info_ticket[0][5]);
-                            menssage_final = menssage_final.replace("[ESTADO]", info_ticket[0][6]);
-                            menssage_final = menssage_final.replace("[SOLICITANTES]", info_ticket[0][7]);
-                            menssage_final = menssage_final.replace("[CATEGORIA_TICKET]", info_ticket[0][8]);
-                            menssage_final = menssage_final.replace("[TECNICOS]", info_ticket[0][10]);
+                            menssage_final = menssage_final.replace("[ENTIDAD]", str(info_ticket[0][5]));
+                            menssage_final = menssage_final.replace("[ESTADO]", str(info_ticket[0][6]));
+                            menssage_final = menssage_final.replace("[SOLICITANTES]", str(info_ticket[0][7]));
+                            menssage_final = menssage_final.replace("[CATEGORIA_TICKET]", str(info_ticket[0][8]));
+                            menssage_final = menssage_final.replace("[TECNICOS]", str(info_ticket[0][10]));
 
                             bot_handler.send_reply(message, "Ticket Consultado.");
                             bot_handler.send_reply(message,  menssage_final);
