@@ -100,6 +100,7 @@ class SoporteHandler():
             elif bot_handler.storage.get(f"{message['sender_full_name']}@aciel.co")["step"] == "id_ticket":
                 
                 list_message = message["full_content"].split("/");
+                print(list_message)
                 if len(list_message) == 2 and list_message[0].lower() == "/":
                     
                     bot_handler.send_reply(message, "Se esta consultando el ticket");
