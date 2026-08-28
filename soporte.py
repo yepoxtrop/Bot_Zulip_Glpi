@@ -25,12 +25,7 @@ class SoporteHandler():
         """
 
     def handle_message(self, message: Dict[str, Any], bot_handler: AbstractBotHandler) -> None:
-        message_ayuda_caso = (
-        	"Id  \n",
-        	"Regalanos el id del ticket.",
-        	"`/Si numero_ticket` -> Si tienes el ticket. \n"
-        	"`/No` -> Si no tienes el id."
-        )
+        print(message)
         
         # Si no existe la llave, la crea
         if not bot_handler.storage.contains(f"{message['sender_full_name']}@aciel.co"):
@@ -45,8 +40,7 @@ class SoporteHandler():
                     "is_completed": None
                 }
             );
-        # print(bot_handler.storage.get(f"{message['sender_full_name']}@aciel.co")["step"]);
-
+        
         # Validacion de los comandos para el bot
         # Comando /Ayuda -> Comando principal para:
         # - Crear casos
