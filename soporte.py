@@ -176,7 +176,7 @@ class SoporteHandler():
         # - Crear casos - Para versiones posteriores
         # - Ofrecer canales de comunicacion
         elif bot_handler.storage.get(f"{message['sender_full_name']}@aciel.co")["process"] == "/caso" or message["full_content"].lower() == "/caso":
-            
+            print("Entramos al condicional de /caso")
             # Si el comando no esta inicializado
             if bot_handler.storage.get(f"{message['sender_full_name']}@aciel.co")["step"] == None:
                 # content = "".join(map(str, Messages.MESSAGE_CASO_WELCOME.value));
