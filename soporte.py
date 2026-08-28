@@ -93,7 +93,7 @@ class SoporteHandler():
                         }
                     )
                 else :
-                    bot_handler.send_reply(message, "Comando no válido, recuerda que las opciones validas son: ");
+                    bot_handler.send_reply(message, "Comando no válido, recuerda que las opciones validas son:\n ✅ `/Si` → Ya tengo un ID de caso.\n❌ `/No` → Aún no he creado el caso.");
 
             # Si esta activo el proceso de 'caso'
             # Se pregunta al usuario si tiene el id del caso
