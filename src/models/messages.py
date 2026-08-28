@@ -58,10 +58,16 @@ class Messages(Enum):
         "📋 Puedes registrar o consultar tus solicitudes a través de los siguientes canales:\n",
         f"💻 `GLPI`: {GLPI_URL}\n",
         f"📱 `WHATSAPP CORPORATIVO 1`: {NUMERO_SOPORTE1}\n",
-        f"📱 `WHATSAPP CORPORATIVO 2`: {NUMERO_SOPORTE1}\n",
+        f"📱 `WHATSAPP CORPORATIVO 2`: {NUMERO_SOPORTE2}\n",
         f"✉️ `CORREO CORPORATIVO`: {CORREO_SOPORTE}\n\n",
         f"🕒 HORARIOS DE ATENCION\n\n",
-        "SLOGAN"
+        "- `Lunes:` 7:30 a.m - 5:00 p.m\n",
+        "- `Martes:` 7:30 a.m - 5:00 p.m\n",
+        "- `Miercoles:` 7:30 a.m - 5:00 p.m\n",
+        "- `Jueves:` 7:30 a.m - 5:00 p.m\n",
+        "- `Viernes:` 7:30 a.m - 4:30 p.m\n",
+        "- `Fines de semana - Festivos:` No estamos disponibles\n\n",
+        "**DEPARTAMENTO DE TECNOLOGÍA - SOLUCIONES INTEGRALES**"
     )
 
     MESSAGE_RUSDESK_OS = (
