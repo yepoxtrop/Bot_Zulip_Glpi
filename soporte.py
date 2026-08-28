@@ -214,7 +214,7 @@ class SoporteHandler():
                     list_files = []
                     with open("./src/scripts/code_rustdesk.bat", "rb") as fp:
                         result = client.upload_file(fp);
-                        list_files.append(result["url"]);
+                        list_files.append(ZULIP_URL+result["url"]);
 
                     with open("./src/media/code_rustdesk/windows.png", "rb") as fp:
                         result = client.upload_file(fp);
@@ -248,7 +248,7 @@ class SoporteHandler():
                     list_files = []
                     with open("./src/scripts/code_rustdesk.sh", "rb") as fp:
                         result = client.upload_file(fp);
-                        list_files.append(result["url"])
+                        list_files.append(ZULIP_URL+result["url"])
                         
                     with open("./src/media/code_rustdesk/windows.png", "rb") as fp:
                         result = client.upload_file(fp);
@@ -271,7 +271,7 @@ class SoporteHandler():
                         }
                     );
                 else :
-                    bot_handler.send_reply(message, "Comando no válido, recuerda que las opciones validas son: ");
+                    bot_handler.send_reply(message, "Comando no válido, recuerda que las opciones validas son: \n- `/Linux` → Si utilizas una distribución Linux.\n- `/Windows` → Si utilizas Windows 10 o Windows 11.");
         
         else:
             content = "".join(map(str, Messages.MESSAGE_GENERAL.value));
