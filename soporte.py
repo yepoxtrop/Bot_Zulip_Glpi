@@ -7,13 +7,18 @@ import zulip;
 from src.database.queries import find_ticket;
 
 # Modelos creados
-from src.models.impacto import Impacto;
-from src.models.prioridad import Prioridad;
-from src.models.urgencia import Urgencia;
+from src.models.enums import Impacto, Prioridad, Urgencia;
 from src.models.messages import Messages;
 
 # Constantes creadas
 from src.settings.settings import ZULIP_URL, DOMINIO_CORPORATIVO;
+
+
+def enum_label(enum_type, value: int) -> str:
+    try:
+        return enum_type(value).label
+    except ValueError:
+        return str(value)
 
 class SoporteHandler():
     def usage(self) -> str:
@@ -118,28 +123,14 @@ class SoporteHandler():
                             menssage_final = "".join(map(str, Messages.MESSAGE_INFO_TICKET.value))
                             menssage_final = menssage_final.replace("[ID_TICKET]", str(info_ticket[0][0]));
                             menssage_final = menssage_final.replace("[TITULO_TICKET]", str(info_ticket[0][1]));
-                            if info_ticket[0][2] == 1: 
-                                menssage_final = menssage_final.replace("[URGENCIA]", "Muy Baja");
-                            elif info_ticket[0][2] == 2: 
-                                menssage_final = menssage_final.replace("[URGENCIA]", "Baja");                        
-                            elif info_ticket[0][2] == 3: 
-                                menssage_final = menssage_final.replace("[URGENCIA]", "Mediana");
-                            elif info_ticket[0][2] == 4: 
-                                menssage_final = menssage_final.replace("[URGENCIA]", "Alta");
-                            elif info_ticket[0][2] == 5: 
-                                menssage_final = menssage_final.replace("[URGENCIA]", "Muy Alta");                                   
+                            menssage_final = menssage_final.replace(
+                                "[URGENCIA]", enum_label(Urgencia, info_ticket[0][2])
+                            );
                             #menssage_final = menssage_final.replace("[PRIORIDAD]", str(info_ticket[0][3]));
                             menssage_final = menssage_final.replace("[CATEGORIA]", str(info_ticket[0][4]));
-                            if info_ticket[0][4] == 1: 
-                                menssage_final = menssage_final.replace("[PRIORIDAD]", "Muy Baja");
-                            elif info_ticket[0][4] == 2: 
-                                menssage_final = menssage_final.replace("[PRIORIDAD]", "Baja");                        
-                            elif info_ticket[0][4] == 3: 
-                                menssage_final = menssage_final.replace("[PRIORIDAD]", "Mediana");
-                            elif info_ticket[0][4] == 4: 
-                                menssage_final = menssage_final.replace("[PRIORIDAD]", "Alta");
-                            elif info_ticket[0][4] == 5: 
-                                menssage_final = menssage_final.replace("[PRIORIDAD]", "Muy Alta");
+                            menssage_final = menssage_final.replace(
+                                "[PRIORIDAD]", enum_label(Prioridad, info_ticket[0][4])
+                            );
                             menssage_final = menssage_final.replace("[ENTIDAD]", str(info_ticket[0][5]));
                             # menssage_final = menssage_final.replace("[ESTADO]", str(info_ticket[0][6]));
                             if info_ticket[0][6] == 1: 
