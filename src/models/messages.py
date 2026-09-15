@@ -1,101 +1,110 @@
 from enum import Enum
-from settings.settings import GLPI_URL, NUMERO_SOPORTE1, NUMERO_SOPORTE2, CORREO_SOPORTE;
+from textwrap import dedent
+
+from src.settings.settings import (
+    CORREO_SOPORTE,
+    GLPI_URL,
+    NUMERO_SOPORTE1,
+    NUMERO_SOPORTE2,
+)
 
 class Messages(Enum):
 
-    MESSAGE_AYUDA_WELCOME = (
-        "Hola, soy **Tech**, tu asistente de soporte técnico.\n",
-        "Antes de continuar, recuerda que toda solicitud debe registrarse en **Helpdesk**, donde se genera un **ID de caso**.\n\n",
-        "¿Ya creaste tu caso en Helpdesk? Selecciona una opción:\n",
-        "✅ `/Si` → Ya tengo un ID de caso.\n",
-        "❌ `/No` → Aún no he creado el caso."
-    )
+    MESSAGE_AYUDA_WELCOME = dedent("""
+        Hola, soy **Tech**, tu asistente de soporte técnico.
+        Antes de continuar, recuerda que toda solicitud debe registrarse en **Helpdesk**, donde se genera un **ID de caso**.
 
-    MESSAGE_AYUDA_TICKET = (
-        "Perfecto. Para continuar, necesito el **ID de tu ticket**.\n\n",
-        "Por favor, envíalo con el siguiente formato:\n",
-        "👉 `<numero_ticket>` (ejemplo: `4168`)\n\n",
-    )
+        ¿Ya creaste tu caso en Helpdesk? Selecciona una opción:
+        ✅ `1` → Sí, ya tengo un ID de caso.
+        ❌ `2` → No, todavía no he creado el caso.
+    """)
 
-    MESSAGE_AYUDA_TICKET_YES = (
-        "Por favor, envíame el ID del ticket con el siguiente formato:\n",
-        "👉 `<numero_ticket>` (ejemplo: `4168`)",
-    )
+    MESSAGE_AYUDA_TICKET = dedent("""
+        Perfecto. Para continuar, necesito el **ID de tu ticket**.
 
-    MESSAGE_AYUDA_TICKET_NO = (
-        "Entiendo que aún no tienes un caso creado.\n\n",
-        "¿Deseas que te ayude a crear un nuevo ticket?\n\n",
-        "✅ `1` → Crear un nuevo ticket.\n",
-        "❌ `2` → Lo crearé más tarde."
-    )
+        Envíame únicamente el número del ticket.
+        👉 Ejemplo: `4168`
+    """)
+
+    MESSAGE_AYUDA_TICKET_YES = dedent("""
+        Por favor, envíame únicamente el número de tu ticket.
+        👉 Ejemplo: `4168`
+    """)
+
+    MESSAGE_AYUDA_TICKET_NO = dedent("""
+        Entiendo que aún no tienes un caso creado.
+
+        ¿Deseas que te ayude a crear un nuevo ticket?
+
+        ✅ `1` → Crear un nuevo ticket.
+        ❌ `2` → Lo crearé más tarde.
+    """)
     
-    MESSAGE_INFO_TICKET = (
-        "- `Id Ticket:` [ID_TICKET] \n",
-        "- `Estado:` [ESTADO] \n",
-        "- `Titulo Ticket:` [TITULO_TICKET] \n",
-        "- `Urgencia:` [URGENCIA]\n", # - Informacion que trae la consulta, pero no tan relevante para el usuario
-        #"- `Impacto:` [IMPACTO] \n",
-        "- `Prioridad:` [PRIORIDAD] \n",
-        "- `Entidad:` [ENTIDAD] \n",
-        "- `Solicitantes:` [SOLICITANTES] \n",
-        "- `Categoría Ticket:` [CATEGORIA_TICKET] \n",
-        # "- `Id Técnicos:`", # - Informacion que trae la consulta, pero no tan relevante para el usuario
-        "- `Técnicos:` [TECNICOS] \n"
-    )
-    
-    MESSAGE_CASO_WELCOME = (
-        "Hola, soy **Tech**, tu asistente de soporte técnico.\n",
-        "Vamos a crear un caso en el **Helpdesk**, donde se genera un **ID de caso**.\n\n",
-        "¿Quieres crear tu caso en Helpdesk? Selecciona una opción:\n",
-        "✅ `1` → Ya tengo un ID de caso.\n",
-        "❌ `2` → Aún no he creado el caso."
-    )
-    
-    MESSAGE_CASO_CHANELS = (
-        "Puedes registrar o consultar tus solicitudes a través de los siguientes canales:\n",
-        f"💻 `GLPI`: {GLPI_URL}\n",
-        f"📱 `WHATSAPP CORPORATIVO 1`: {NUMERO_SOPORTE1}\n",
-        f"📱 `WHATSAPP CORPORATIVO 2`: {NUMERO_SOPORTE2}\n",
-        f"✉️ `CORREO CORPORATIVO`: {CORREO_SOPORTE}\n\n",
-        f"🕒 HORARIOS DE ATENCION\n\n",
-        "- `Lunes:` 7:30 a.m - 5:00 p.m\n",
-        "- `Martes:` 7:30 a.m - 5:00 p.m\n",
-        "- `Miercoles:` 7:30 a.m - 5:00 p.m\n",
-        "- `Jueves:` 7:30 a.m - 5:00 p.m\n",
-        "- `Viernes:` 7:30 a.m - 4:30 p.m\n",
-        "- `Fines de semana - Festivos:` No estamos disponibles\n\n",
-        "**DEPARTAMENTO DE TECNOLOGÍA - SOLUCIONES INTEGRALES**"
-    )
+    MESSAGE_INFO_TICKET = dedent("""
+        📌 **Resumen de tu ticket**
 
-    MESSAGE_RUSDESK_OS = (
-        "💻 Indícame cuál es tu sistema operativo para ayudarte a obtener tu **ID de RustDesk**:\n\n"
-        "- `1` → Si utilizas una distribución Linux.\n"
-        "- `2` → Si utilizas Windows 10 o Windows 11.\n"
-    )
-
-    MESSAGE_RUSDESK_URL_FILE = (
-        "💻 Haz clic en el siguiente enlace para descargar el ejecutable:\n\n"
-        "- [URL_ARCHIVO]\n\n"
-        "📋 Una vez ejecutado, se mostrará tu **ID de RustDesk**.\n"
-        "Puedes guiarte con la siguiente imagen de referencia:\n"
-        #"[URL_IMAGEN]\n\n"
-        #"✅ Cuando tengas el código, envíamelo con el siguiente formato:\n"
-        #"👉 `/codigo <numero_codigo>`\n"
-        #"Ejemplo: `/codigo 198580064`\n\n",
-        #"En la pantalla verás un bloc de notas con un código, dime ese código de la siguiente manera:\n",
-        #"👉 `/codigo <numero_codigo>` (ejemplo: `/codigo 198580064`)\n\n",
-    )
-
-    MESSAGE_GENERAL = (
-        "👋 Hola [NOMBRE_USUARIO], un gusto saludarte.\n",
-        "🤖 Soy **Tech**, tu asistente de soporte técnico de **Aciel Soluciones Integrales**.\n\n",
-        "📋 Estas son las opciones disponibles:\n",
-        "- `/Ayuda` → Solicitar soporte técnico.\n",
-        "- `/Caso` → Obtener los enlaces para la creación de casos.\n",
-        "- `/Rustdesk` → Consultar tu ID de RustDesk.\n",
-        #"- `/Sys` → Solicitud de soporte técnico.\n", # -- Veriones futuras
-        #"- `/Enlaces` → Solicitud de documentos para la mesa de ayuda.\n", # -- Veriones futuras
-        #"- `/Caso` → Creacion de caso en glpi.\n", # -- Veriones futuras
-    )
+        - **ID:** [ID_TICKET]
+        - **Estado:** [ESTADO]
+        - **Título:** [TITULO_TICKET]
+        - **Urgencia:** [URGENCIA]
+        - **Prioridad:** [PRIORIDAD]
+        - **Entidad:** [ENTIDAD]
+        - **Solicitante(s):** [SOLICITANTES]
+        - **Categoría:** [CATEGORIA_TICKET]
+        - **Técnico(s) asignado(s):** [TECNICOS]
+    """)
     
-print(GLPI_URL)
+    MESSAGE_CASO_WELCOME = dedent("""
+        Hola, soy **Tech**, tu asistente de soporte técnico.
+        Vamos a gestionar tu solicitud en **Helpdesk**, donde se genera un **ID de caso**.
+
+        ¿Qué deseas hacer? Selecciona una opción:
+        ✅ `1` → Consultar un ticket existente.
+        ❌ `2` → Ver los canales para crear un ticket.
+    """)
+    
+    MESSAGE_CASO_CHANELS = dedent(f"""
+        Puedes registrar o consultar tus solicitudes a través de estos canales:
+        💻 `GLPI`: {GLPI_URL}
+        📱 `WHATSAPP CORPORATIVO 1`: {NUMERO_SOPORTE1}
+        📱 `WHATSAPP CORPORATIVO 2`: {NUMERO_SOPORTE2}
+        ✉️ `CORREO CORPORATIVO`: {CORREO_SOPORTE}
+
+        🕒 **Horario de atención**
+
+        - **Lunes a jueves:** 7:30 a. m. - 5:00 p. m.
+        - **Viernes:** 7:30 a. m. - 4:30 p. m.
+        - **Fines de semana y festivos:** No estamos disponibles.
+
+        **DEPARTAMENTO DE TECNOLOGÍA - SOLUCIONES INTEGRALES**
+    """)
+
+    MESSAGE_RUSDESK_OS = dedent("""
+        💻 ¿Qué sistema operativo utilizas? Así te enviaré el archivo correcto para obtener tu **ID de RustDesk**:
+
+        `1` → Linux
+        `2` → Windows 10 u 11
+
+        Responde únicamente con `1` o `2`.
+    """)
+
+    MESSAGE_RUSDESK_URL_FILE = dedent("""
+        ✅ Descarga el archivo desde este enlace:
+
+        [URL_ARCHIVO]
+
+        📋 Cuando lo ejecutes, se mostrará tu **ID de RustDesk**.
+        El equipo de soporte podrá solicitarte ese ID para conectarse.
+    """)
+
+    MESSAGE_GENERAL = dedent("""
+        👋 Hola [NOMBRE_USUARIO], un gusto saludarte.
+        🤖 Soy **Tech**, tu asistente de soporte técnico de **Aciel Soluciones Integrales**.
+
+        📋 ¿En qué puedo ayudarte?
+        - `/Ayuda` → Consultar el estado de un ticket.
+        - `/Caso` → Ver los canales para crear o consultar un ticket.
+        - `/Rustdesk` → Obtener ayuda con tu ID de RustDesk.
+    """)
+    
+    
