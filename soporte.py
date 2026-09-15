@@ -69,7 +69,7 @@ class SoporteHandler():
 
                 # Si la respuesta es '/si', se le pregunta a la persona si tiene el id
                 # Se cambia el step a 'id_ticket'
-                if message["full_content"].lower() == "/si":
+                if message["full_content"].lower() == "1":
                     bot_handler.send_reply(message, "".join(map(str, Messages.MESSAGE_AYUDA_TICKET_YES.value)));
                     bot_handler.storage.put(f"{message['sender_full_name']}@{DOMINIO_CORPORATIVO}", {
                             "name":message["sender_full_name"], 
@@ -82,7 +82,7 @@ class SoporteHandler():
 
                 # Si la respuesta es '/no', se le pregunta si quiere crear un caso
                 # Se cambia el step a 'crear_ticker'
-                elif message["full_content"].lower() == "/no":
+                elif message["full_content"].lower() == "2":
                     bot_handler.send_reply(message, "".join(map(str, Messages.MESSAGE_CASO_CHANELS.value)));
                     bot_handler.storage.put(f"{message['sender_full_name']}@{DOMINIO_CORPORATIVO}", {
                             "name":message["sender_full_name"], 
@@ -238,7 +238,7 @@ class SoporteHandler():
 
                 # Si la respuesta es '/windows'
                 # Se hace una petición a al api de zulip, se carga el archivo y se envia atachado
-                if message["full_content"].lower() == "/windows":
+                if message["full_content"].lower() == "2":
                     
                     # Pass the path to your zuliprc file here.
                     client = zulip.Client(config_file="./zuliprc"); 
@@ -272,7 +272,7 @@ class SoporteHandler():
                     );
                 # Si la respuesta es '/windows'
                 # Se hace una petición a al api de zulip, se carga el archivo y se envia atachado
-                elif message["full_content"].lower() == "/linux":
+                elif message["full_content"].lower() == "1":
                     # Pass the path to your zuliprc file here.
                     client = zulip.Client(config_file="./zuliprc");
 

@@ -14,19 +14,19 @@ class Messages(Enum):
     MESSAGE_AYUDA_TICKET = (
         "Perfecto. Para continuar, necesito el **ID de tu ticket**.\n\n",
         "Por favor, envíalo con el siguiente formato:\n",
-        "👉 `/<numero_ticket>` (ejemplo: `/4168`)\n\n",
+        "👉 `<numero_ticket>` (ejemplo: `4168`)\n\n",
     )
 
     MESSAGE_AYUDA_TICKET_YES = (
         "Por favor, envíame el ID del ticket con el siguiente formato:\n",
-        "👉 `/<numero_ticket>` (ejemplo: `/4168`)",
+        "👉 `<numero_ticket>` (ejemplo: `4168`)",
     )
 
     MESSAGE_AYUDA_TICKET_NO = (
         "Entiendo que aún no tienes un caso creado.\n\n",
         "¿Deseas que te ayude a crear un nuevo ticket?\n\n",
-        "✅ `/Si` → Crear un nuevo ticket.\n",
-        "❌ `/No` → Lo crearé más tarde."
+        "✅ `1` → Crear un nuevo ticket.\n",
+        "❌ `2` → Lo crearé más tarde."
     )
     
     MESSAGE_INFO_TICKET = (
@@ -47,8 +47,8 @@ class Messages(Enum):
         "Hola, soy **Tech**, tu asistente de soporte técnico.\n",
         "Vamos a crear un caso en el **Helpdesk**, donde se genera un **ID de caso**.\n\n",
         "¿Quieres crear tu caso en Helpdesk? Selecciona una opción:\n",
-        "✅ `/Si` → Ya tengo un ID de caso.\n",
-        "❌ `/No` → Aún no he creado el caso."
+        "✅ `1` → Ya tengo un ID de caso.\n",
+        "❌ `2` → Aún no he creado el caso."
     )
     
     MESSAGE_CASO_CHANELS = (
@@ -69,8 +69,8 @@ class Messages(Enum):
 
     MESSAGE_RUSDESK_OS = (
         "💻 Indícame cuál es tu sistema operativo para ayudarte a obtener tu **ID de RustDesk**:\n\n"
-        "- `/Linux` → Si utilizas una distribución Linux.\n"
-        "- `/Windows` → Si utilizas Windows 10 o Windows 11.\n"
+        "- `1` → Si utilizas una distribución Linux.\n"
+        "- `2` → Si utilizas Windows 10 o Windows 11.\n"
     )
 
     MESSAGE_RUSDESK_URL_FILE = (
