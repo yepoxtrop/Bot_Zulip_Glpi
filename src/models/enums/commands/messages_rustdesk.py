@@ -1,7 +1,7 @@
 from enum import Enum;
 from textwrap import dedent
 
-def Rustdesk_Messages(Enum):
+class Rustdesk_Messages(Enum):
     
     MESSAGE_RUSDESK_OS = dedent("""
         💻 ¿Qué sistema operativo utilizas? Así te enviaré el archivo correcto para obtener tu **ID de RustDesk**:

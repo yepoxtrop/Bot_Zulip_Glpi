@@ -1,7 +1,15 @@
-"""Enums utilizados por las entidades y casos de uso del bot."""
+from .tickets import Impacto, Prioridad, Urgencia
+from .commands import Docs_Messages, General_Messages, Help_Messages, Rate_Us_Messages, Rustdesk_Messages, Tickets_Messages, Welcome_Messages;
 
-from .impacto import Impacto
-from .prioridad import Prioridad
-from .urgencia import Urgencia
-
-__all__ = ["Impacto", "Prioridad", "Urgencia"]
+__all__ = [
+    "Impacto", 
+    "Prioridad", 
+    "Urgencia", 
+    "Docs_Messages",
+    "General_Messages",
+    "Help_Messages",
+    "Rate_Us_Messages",
+    "Rustdesk_Messages",
+    "Tickets_Messages",
+    "Welcome_Messages"
+]

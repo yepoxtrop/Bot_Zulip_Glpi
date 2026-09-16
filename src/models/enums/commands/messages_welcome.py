@@ -1,7 +1,7 @@
 from enum import Enum;
 from textwrap import dedent
 
-def Welcome_Messages(Enum):
+class Welcome_Messages(Enum):
     
     WELCOME_GENERAL_MESSAGE = dedent("""
         👋 Hola [NOMBRE_USUARIO], un gusto saludarte.
@@ -15,7 +15,25 @@ def Welcome_Messages(Enum):
         - `5` → Calificar soporte técnico.
     """);
     
+    WELCOME_CHANELS_GENERAL_MESSAGE = dedent("""
+        Puedes registrar o consultar tus solicitudes a través de estos canales:
+        💻 `GLPI`: {GLPI_URL}
+        📱 `WHATSAPP CORPORATIVO 1`: {NUMERO_SOPORTE1}
+        📱 `WHATSAPP CORPORATIVO 2`: {NUMERO_SOPORTE2}
+        ✉️ `CORREO CORPORATIVO`: {CORREO_SOPORTE}
+
+        🕒 **Horario de atención**
+
+        - **Lunes a jueves:** 7:30 a. m. - 5:00 p. m.
+        - **Viernes:** 7:30 a. m. - 4:30 p. m.
+        - **Fines de semana y festivos:** No estamos disponibles.
+
+        **DEPARTAMENTO DE TECNOLOGÍA - SOLUCIONES INTEGRALES**
+    """);
+    
     WELCOME_ERROR_GENERAL_MESSAGE = dedent("""
         👋 Hola [NOMBRE_USUARIO], un gusto saludarte.
         En estos momentos presentamos problemas técnicos, por favor intenta más tarde.
     """);
+    
+    
