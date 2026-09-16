@@ -7,7 +7,7 @@ import zulip;
 from src.database.queries import find_ticket;
 
 # Modelos creados
-from src.models.enums.tickets import Impacto, Prioridad, Urgencia;
+from src.models.enums import Impacto, Prioridad, Urgencia;
 from src.models.messages import Messages;
 
 # Constantes creadas

@@ -1,3 +1,3 @@
-from .enums.tickets.impacto import Impacto
+from .enums.impacto import Impacto
 
 __all__ = ["Impacto"]

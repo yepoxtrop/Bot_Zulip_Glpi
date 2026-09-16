@@ -1,3 +1,3 @@
-from .enums.tickets.prioridad import Prioridad
+from .enums.prioridad import Prioridad
 
 __all__ = ["Prioridad"]
