@@ -1,11 +1,8 @@
-# Interfaces
-import tkinter as tk
-
 # Funcionalidad 
 import subprocess;
 import os;
 
-def code_rustdesk()->str:
+def code_rustdesk():
     
     PATH_RUSTDESK = "C:\\Program Files\\RustDesk";
 
@@ -15,7 +12,6 @@ def code_rustdesk()->str:
     rustdesk_code = subprocess.run([f"{PATH_RUSTDESK}\\{"rustdesk.exe"}", "--get-id", "|", "more"], check=True, capture_output=True);
     rustdesk_code = rustdesk_code.stdout.decode("utf-8");
     rustdesk_code_clean = rustdesk_code.replace("\n", "")
-    print(rustdesk_code_clean)
-    return rustdesk_code_clean;
+    subprocess.run(["notepad", rustdesk_code_clean], check=True);
 
-print(code_rustdesk())
+code_rustdesk()
