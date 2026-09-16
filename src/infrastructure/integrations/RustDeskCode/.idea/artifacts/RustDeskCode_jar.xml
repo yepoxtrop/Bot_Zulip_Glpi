@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="RustDeskCode:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/RustDeskCode_jar</output-path>
+    <root id="archive" name="RustDeskCode.jar">
+      <element id="module-output" name="RustDeskCode" />
+    </root>
+  </artifact>
+</component>

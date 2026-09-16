@@ -18,20 +18,4 @@ def code_rustdesk()->str:
     print(rustdesk_code_clean)
     return rustdesk_code_clean;
 
-def interface():
-    root = tk.Tk();
-    root.title("Codigo Rustdesk");
-    root.geometry("300x300");
-    root.resizable(False, False)
-    
-    title = tk.Label(root, text="OBTEN TU CÓDIGO DE RUSTDESK")
-    title.pack()
-
-    title2 = tk.Label(root, text="OBTEN TU CÓDIGO DE RUSTDESK")
-    title2.pack()
-    
-    button = tk.Button(root, text="Generar Codigo", command=code_rustdesk)
-    button.pack()
-
-    root.mainloop()
-interface();
+print(code_rustdesk())

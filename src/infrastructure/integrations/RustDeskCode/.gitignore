@@ -1,21 +1,8 @@
-.env
-**/__pycache__/
-.ssh/
-**zuliprc
-
-
-
-
-
-
-
-
-
-**target/
+target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-**/.kotlin
+.kotlin
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
@@ -42,7 +29,6 @@
 /nbdist/
 /.nb-gradle/
 build/
-out/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
