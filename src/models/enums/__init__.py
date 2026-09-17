@@ -1,10 +1,12 @@
-from .tickets import Impacto, Prioridad, Urgencia
+from .tickets import Impacto, Prioridad, Urgencia, Categorias, TipoTickets;
 from .commands import Docs_Messages, General_Messages, Help_Messages, Rate_Us_Messages, Rustdesk_Messages, Tickets_Messages, Welcome_Messages;
 
 __all__ = [
     "Impacto", 
     "Prioridad", 
     "Urgencia", 
+    "Categorias",
+    "TipoTickets",
     "Docs_Messages",
     "General_Messages",
     "Help_Messages",
@@ -12,4 +14,4 @@ __all__ = [
     "Rustdesk_Messages",
     "Tickets_Messages",
     "Welcome_Messages"
-]
+]; 

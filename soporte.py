@@ -24,7 +24,7 @@ class SoporteHandler():
     def usage(self) -> str:
         return """
         Este bot es el encargado de brindar soporte técnico básico
-        a los colcaboradores desde el chat directo con él,
+        a los colcaboradores desde el chat directo con él,mysql
         este bot después de hablar con el colaborador podrá informarle
         al personal de soporte técnico sobre la incidencia reportada.
         """
