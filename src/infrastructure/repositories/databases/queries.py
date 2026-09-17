@@ -1,13 +1,5 @@
-import sys
-import os
-
-# Importacion para test
-current_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.dirname(current_dir)
-sys.path.insert(0, parent_dir)
-
-from src.database.connector import connector_db;
-from src.database.query_error import QueryError; # Clase de error personalizado
+from infrastructure.repositories.databases.connector import connector_db;
+from infrastructure.repositories.databases.query_error import QueryError; # Clase de error personalizado
 
 # Funciones para consulta e insercion en la base de datos del glpi
 def find_ticket(id_ticket:int):

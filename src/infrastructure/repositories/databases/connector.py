@@ -17,4 +17,3 @@ connector_db = cn.connect(
     password=GLPI_PASSWORD,
     database=GLPI_DATABASE
 )
-
