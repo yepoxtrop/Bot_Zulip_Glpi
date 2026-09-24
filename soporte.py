@@ -4,7 +4,7 @@ from zulip_bots.lib import AbstractBotHandler;
 import zulip;
 
 # Funciones creadas
-from infrastructure.repositories.databases.queries import find_ticket;
+from infrastructure.repositories.databases.queries.queries import find_ticket;
 
 # Modelos creados
 from src.models.enums import Impacto, Prioridad, Urgencia;
