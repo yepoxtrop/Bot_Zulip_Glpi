@@ -1,3 +1,3 @@
-SELECT REPLACE(delivery_email, '@aciel.co', '')
+SELECT REPLACE(delivery_email, '@domain', '')
 FROM zerver_userprofile
-WHERE email = 'user14@intrachat.aciel.co';
+WHERE email = 'user14@zulipdomain.domain';
