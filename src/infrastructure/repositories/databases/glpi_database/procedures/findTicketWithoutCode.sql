@@ -1,20 +1,18 @@
 /* ===================================================================
- * PROCEDURE: 	FindTicket
+ * PROCEDURE: 	FindTicketWithoutCode
  * AUTHOR:		Luis Sarmiento
- * DESCRIPTION:	Get info about one ticket
+ * DESCRIPTION:	Get info about the last ticket from a user
  * 
- * INPUTS:		-id_ticket_to_find 	-> Id to find
- * 				-name_user			-> Possible user
+ * INPUTS:		-name_user -> Possible user
  * 
  * OUTPUTS:		-Case_00 -> Code 0 mean error, don't acces to ticket
  * 				-Case_01 -> Query.
  * =================================================================== */
 
-DROP PROCEDURE IF EXISTS FindTicket;
+DROP PROCEDURE IF EXISTS FindTicketWithoutCode;
 
 DELIMITER $$
-CREATE PROCEDURE FindTicket(
-	IN id_ticket_to_find INT,
+CREATE PROCEDURE FindTicketWithoutCode(
 	IN name_user VARCHAR(100)
 )
 BEGIN
@@ -37,7 +35,8 @@ BEGIN
 	ON glpi_users.id = glpi_tickets.users_id_recipient
 	WHERE (CONCAT(glpi_users.firstname, ' ' ,glpi_users.realname) = name_user
 	OR glpi_tickets.content LIKE CONCAT('%', name_user, '%'))
-	AND glpi_tickets.id = id_ticket_to_find;  
+	ORDER BY glpi_tickets.id 
+	LIMIT 1;
 	
 	
 	IF check_ticket IS NULL THEN
@@ -54,7 +53,7 @@ BEGIN
 		/* Create temporary table with query */
 		DROP TABLE IF EXISTS tmp_followups;
 		CREATE TEMPORARY TABLE tmp_followups AS
-		SELECT id_ticket_to_find as `ticket`
+		SELECT check_ticket as `ticket`
 			,recipient_user_id as `id_recipient`
 			,name_user as `name_recipient`
 			,glpi_itilfollowups.users_id as `id_followup`
@@ -63,12 +62,12 @@ BEGIN
 		FROM glpi_itilfollowups
 		INNER JOIN glpi_tickets ON glpi_itilfollowups.items_id = glpi_tickets.id
 		INNER JOIN glpi_users ON glpi_users.id = glpi_itilfollowups.users_id 
-		WHERE glpi_itilfollowups.items_id = id_ticket_to_find AND glpi_itilfollowups.users_id IN(
+		WHERE glpi_itilfollowups.items_id = check_ticket AND glpi_itilfollowups.users_id IN(
 			/* Find id techs from the ticket id*/
 			SELECT glpi_users.id 
     		FROM glpi_users 
 	    	INNER JOIN glpi_tickets_users on glpi_users.id = glpi_tickets_users.users_id AND glpi_tickets_users.`type` = 2
-    		WHERE glpi_tickets_users.tickets_id = id_ticket_to_find
+    		WHERE glpi_tickets_users.tickets_id = check_ticket
 		) ORDER BY glpi_itilfollowups.`date`;
 	
 		SELECT IFNULL(GROUP_CONCAT(followup SEPARATOR '¥'), False) AS 'FOLLOWUPS' , 
@@ -108,5 +107,5 @@ END $$
 DELIMITER ;
 
 /* TRY SP */
--- CALL findTicket(2614, 'Maria Daniela Zapata Londoño');
-
+-- CALL FindTicketWithoutCode('Maria Daniela Zapata Londoño');
+-- Resultado : 2614
