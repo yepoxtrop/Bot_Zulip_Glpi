@@ -1,9 +1,9 @@
+from .command import Command;
 from ...models.messages import Welcome_Messages;
 
-class Welcome():
+class Welcome(Command):
     
     def __init__(self):
-        
-        pass
+        super.__init__();
     
     
