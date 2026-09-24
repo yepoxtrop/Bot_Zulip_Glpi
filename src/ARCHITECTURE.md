@@ -1,3 +1,6 @@
+
+
+
 # Estructura modular propuesta
 
 Esta estructura agrega capas nuevas sin mover ni modificar los modulos actuales.
