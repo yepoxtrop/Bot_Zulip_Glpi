@@ -15,13 +15,6 @@ from src.settings.settings import ZULIP_URL, DOMINIO_CORPORATIVO;
 
 from src.application.use_cases import Welcome;
 
-
-def enum_label(enum_type, value: int) -> str:
-    try:
-        return enum_type(value).label
-    except ValueError:
-        return str(value)
-
 class SoporteHandler():
     
     def usage(self) -> str:
