@@ -4,11 +4,11 @@ from zulip_bots.lib import AbstractBotHandler;
 import zulip;
 
 # Funciones creadas
-from src.infrastructure.repositories.databases.queries.queries import find_ticket;
+#from src.infrastructure.repositories.databases.queries.queries import find_ticket;
 
 # Modelos creados
-from src.models.enums import Impacto, Prioridad, Urgencia;
-from src.models.messages import Messages;
+#from src.models.enums import Impacto, Prioridad, Urgencia;
+#from src.models.messages import Messages;
 
 # Constantes creadas
 from src.settings.settings import ZULIP_URL, DOMINIO_CORPORATIVO;
