@@ -51,7 +51,17 @@ class SoporteHandler():
             #   - Obtener informacion de soporte - contacto
             
             welcome_conversation = Welcome(message["full_content"]);
-            for msg in welcome_conversation.send_message():
+            list_msg = welcome_conversation.send_message();
+            bot_handler.storage.put(f"{message['sender_full_name']}@{DOMINIO_CORPORATIVO}", {
+                        "name":message["sender_full_name"], 
+                        "email":message["sender_email"],
+                        "process":welcome_conversation.section, 
+                        "step":welcome_conversation.step, 
+                        "is_completed": False
+                    }
+                );
+
+            for msg in list_msg:
                 bot_handler.send_reply(message, msg);
                 
         except Exception as error:
