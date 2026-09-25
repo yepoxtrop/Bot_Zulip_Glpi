@@ -15,6 +15,13 @@ class Welcome_Messages(Enum):
         - `5` → Calificar soporte técnico.
     """);
     
+    WELCOME_HELP_GENERAL_MESSAGE = dedent("""
+            [NOMBRE_USUARIO], espero que el manual [NOMBRE_MANUAL] sea de ayuda.
+            
+            [MANUAL]
+            Si note funciona, crea un ticket en la mesa de ayuda o te puedo ayudar a crearlo.
+        """);
+    
     WELCOME_CHANELS_GENERAL_MESSAGE = dedent("""
         Puedes registrar o consultar tus solicitudes a través de estos canales:
         💻 `GLPI`: {GLPI_URL}

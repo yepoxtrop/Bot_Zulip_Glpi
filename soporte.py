@@ -13,6 +13,8 @@ from src.models.messages import Messages;
 # Constantes creadas
 from src.settings.settings import ZULIP_URL, DOMINIO_CORPORATIVO;
 
+from src.application.use_cases import Welcome;
+
 
 def enum_label(enum_type, value: int) -> str:
     try:
@@ -21,6 +23,7 @@ def enum_label(enum_type, value: int) -> str:
         return str(value)
 
 class SoporteHandler():
+    
     def usage(self) -> str:
         return """
         Este bot es el encargado de brindar soporte técnico básico
@@ -299,9 +302,8 @@ class SoporteHandler():
                     bot_handler.send_reply(message, "Comando no válido, recuerda que las opciones validas son: \n- `/Linux` → Si utilizas una distribución Linux.\n- `/Windows` → Si utilizas Windows 10 o Windows 11.");
         
         else:
-            content = "".join(map(str, Messages.MESSAGE_GENERAL.value));
-            content = content.replace("[NOMBRE_USUARIO]", message["sender_full_name"]);
-            bot_handler.send_reply(message, content);
+            welcome_conversation = Welcome(message["full_content"]);
+            bot_handler.send_reply(message, welcome_conversation.send_message());
 
 
 handler_class = SoporteHandler;
