@@ -15,6 +15,15 @@ class Welcome_Messages(Enum):
         - `5` → Calificar soporte técnico.
     """);
     
+    WELCOME_GENERAL2_MESSAGE = dedent("""
+        📋 ¿En qué puedo ayudarte?
+        - `1` → Consultar el estado de un ticket.
+        - `2` → Ver los canales para crear o consultar un ticket.
+        - `3` → Obtener ayuda con tu ID de RustDesk.
+        - `4` → Obtener ayuda general.
+        - `5` → Calificar soporte técnico.
+    """);
+    
     WELCOME_HELP_GENERAL_MESSAGE = dedent("""
             [NOMBRE_USUARIO], espero que el manual [NOMBRE_MANUAL] sea de ayuda.
             

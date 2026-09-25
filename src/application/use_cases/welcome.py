@@ -17,7 +17,7 @@ class Welcome(Command):
             self.step = "INTRODUCTION";
             self.workflow = "INTRODUCTION";
         else:
-            
+            list_message.append(Welcome_Messages.WELCOME_GENERAL2_MESSAGE.value);
             self.step = "OPEN_CHAT";
             self.workflow = "OPEN_CHAT";
             

@@ -53,6 +53,7 @@ class SoporteHandler():
             welcome_conversation = Welcome(message["full_content"]);
             for msg in welcome_conversation.send_message():
                 bot_handler.send_reply(message, msg);
+                
         except Exception as error:
             print(f"Error procesando el mensaje: {error}")
             raise
