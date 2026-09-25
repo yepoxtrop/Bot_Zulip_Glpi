@@ -9,20 +9,20 @@ class Welcome(Command):
         self._initial_message = initial_message;
         self.inputs = initial_message.lower();
         
-    def send_message(self)->str:
-        message_to_send = "";
+    def send_message(self)->list:
+        list_message = [];
         
         if (len(self.workflow) == 0) :
-            message_to_send += Welcome_Messages.WELCOME_GENERAL_MESSAGE.value;
+            list_message.append(Welcome_Messages.WELCOME_GENERAL_MESSAGE.value);
             self.step = "INTRODUCTION";
             self.workflow = "INTRODUCTION";
         else:
+            
             self.step = "OPEN_CHAT";
             self.workflow = "OPEN_CHAT";
             
         for word in GLPI_KEYWORDS:
-            print(word)
             if word in self.inputs[-1]:
-                message_to_send += Welcome_Messages.WELCOME_HELP_GENERAL_MESSAGE.value;
+                list_message.append(Welcome_Messages.WELCOME_HELP_GENERAL_MESSAGE.value);
                 
-        return message_to_send;
+        return list_message;
