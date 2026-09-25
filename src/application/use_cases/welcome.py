@@ -21,6 +21,7 @@ class Welcome(Command):
             self.workflow = "OPEN_CHAT";
             
         for word in GLPI_KEYWORDS:
+            print(word)
             if word in self.inputs[-1]:
                 message_to_send += Welcome_Messages.WELCOME_HELP_GENERAL_MESSAGE.value;
                 
