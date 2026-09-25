@@ -16,7 +16,6 @@ from src.settings.settings import ZULIP_URL, DOMINIO_CORPORATIVO;
 from src.application.use_cases import Welcome;
 
 class SoporteHandler():
-    
     def usage(self) -> str:
         return """
         Este bot es el encargado de brindar soporte técnico básico
@@ -24,19 +23,18 @@ class SoporteHandler():
         este bot después de hablar con el colaborador podrá informarle
         al personal de soporte técnico sobre la incidencia reportada.
         """
-
     def handle_message(self, message: Dict[str, Any], bot_handler: AbstractBotHandler) -> None:
         try:
             print(message)
                     
             # Si no existe la llave, la crea
             if not bot_handler.storage.contains(f"{message['sender_full_name']}@{DOMINIO_CORPORATIVO}"):
-    
                 # Almacenamiento de clave de usuario nombre@DOMINIO_CORPORATIVO
                 bot_handler.storage.put(
                     f"{message['sender_full_name']}@{DOMINIO_CORPORATIVO}", {
                         "name":message["sender_full_name"], 
                         "email":message["sender_email"],
+                        "object_use_case": None
                         "process": None, 
                         "step": None, 
                         "is_completed": None
@@ -50,19 +48,22 @@ class SoporteHandler():
             #   - Obtener informacion del caso
             #   - Obtener informacion de soporte - contacto
             
-            welcome_conversation = Welcome(message["full_content"]);
-            list_msg = welcome_conversation.send_message();
-            bot_handler.storage.put(f"{message['sender_full_name']}@{DOMINIO_CORPORATIVO}", {
-                        "name":message["sender_full_name"], 
-                        "email":message["sender_email"],
-                        "process":welcome_conversation.section, 
-                        "step":welcome_conversation.step, 
-                        "is_completed": False
-                    }
-                );
-
-            for msg in list_msg:
-                bot_handler.send_reply(message, msg);
+            if bot_handler.storage.get(f"{message['sender_full_name']}@{DOMINIO_CORPORATIVO}")["object_use_case"] == None:
+                welcome_conversation = Welcome(message["full_content"]);
+                list_msg = welcome_conversation.send_message();
+                bot_handler.storage.put(f"{message['sender_full_name']}@{DOMINIO_CORPORATIVO}", {
+                            "name":message["sender_full_name"], 
+                            "email":message["sender_email"],
+                            "object_use_case": welcome_conversation, 
+                            "process":welcome_conversation.section, 
+                            "step":welcome_conversation.step, 
+                            "is_completed": False
+                        }
+                    );
+                for msg in list_msg:
+                    bot_handler.send_reply(message, msg);
+            else: 
+                pass
                 
         except Exception as error:
             print(f"Error procesando el mensaje: {error}")
