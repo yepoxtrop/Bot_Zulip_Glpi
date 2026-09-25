@@ -26,31 +26,35 @@ class SoporteHandler():
         """
 
     def handle_message(self, message: Dict[str, Any], bot_handler: AbstractBotHandler) -> None:
-        print(message)
-        
-        # Si no existe la llave, la crea
-        if not bot_handler.storage.contains(f"{message['sender_full_name']}@{DOMINIO_CORPORATIVO}"):
-
-            # Almacenamiento de clave de usuario nombre@DOMINIO_CORPORATIVO
-            bot_handler.storage.put(
-                f"{message['sender_full_name']}@{DOMINIO_CORPORATIVO}", {
-                    "name":message["sender_full_name"], 
-                    "email":message["sender_email"],
-                    "process": None, 
-                    "step": None, 
-                    "is_completed": None
-                }
-            );
-        
-        # Validacion de los comandos para el bot
-        # Comando /Ayuda -> Comando principal para:
-        # - Crear casos
-        # - Validar el estado del caso y actualizaciones("posteriormente")
-        #   - Obtener informacion del caso
-        #   - Obtener informacion de soporte - contacto
-        
-        welcome_conversation = Welcome(message["full_content"]);
-        bot_handler.send_reply(message, welcome_conversation.send_message());
+        try:
+            print(message)
+                    
+            # Si no existe la llave, la crea
+            if not bot_handler.storage.contains(f"{message['sender_full_name']}@{DOMINIO_CORPORATIVO}"):
+    
+                # Almacenamiento de clave de usuario nombre@DOMINIO_CORPORATIVO
+                bot_handler.storage.put(
+                    f"{message['sender_full_name']}@{DOMINIO_CORPORATIVO}", {
+                        "name":message["sender_full_name"], 
+                        "email":message["sender_email"],
+                        "process": None, 
+                        "step": None, 
+                        "is_completed": None
+                    }
+                );
+            
+            # Validacion de los comandos para el bot
+            # Comando /Ayuda -> Comando principal para:
+            # - Crear casos
+            # - Validar el estado del caso y actualizaciones("posteriormente")
+            #   - Obtener informacion del caso
+            #   - Obtener informacion de soporte - contacto
+            
+            welcome_conversation = Welcome(message["full_content"]);
+            bot_handler.send_reply(message, welcome_conversation.send_message());
+        except Exception as error:
+            print(f"Error procesando el mensaje: {error}")
+            raise
 
 
 handler_class = SoporteHandler;
