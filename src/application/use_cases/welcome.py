@@ -13,7 +13,7 @@ class Welcome(Command):
         message_to_send = "";
         
         if (len(self.workflow) == 0) :
-            message_to_send += Welcome_Messages.WELCOME_GENERAL_MESSAGE;
+            message_to_send += Welcome_Messages.WELCOME_GENERAL_MESSAGE.value;
             self.step = "INTRODUCTION";
             self.workflow = "INTRODUCTION";
         else:
