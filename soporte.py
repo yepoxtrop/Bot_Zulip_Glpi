@@ -61,6 +61,8 @@ class SoporteHandler():
                             "is_completed": False
                         }
                     );
+                
+                print(list_msg[0])
                 for msg in list_msg[0]:
                     bot_handler.send_reply(message, msg);
             else: 
