@@ -11,6 +11,7 @@ class Welcome(Command):
         
     def send_message(self)->list:
         list_message = [];
+        print(len(self.workflow))
         
         if (len(self.workflow) == 0) :
             list_message.append(Welcome_Messages.WELCOME_GENERAL_MESSAGE.value);
@@ -25,4 +26,4 @@ class Welcome(Command):
             if word in self.inputs[-1]:
                 list_message.append(Welcome_Messages.WELCOME_HELP_GENERAL_MESSAGE.value);
                 
-        return list_message;
+        return list_message; 
