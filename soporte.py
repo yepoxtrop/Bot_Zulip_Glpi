@@ -51,6 +51,7 @@ class SoporteHandler():
             if bot_handler.storage.get(f"{message['sender_full_name']}@{DOMINIO_CORPORATIVO}")["object_use_case"] == None:
                 welcome_conversation = Welcome(message["full_content"]);
                 list_msg = welcome_conversation.send_message();
+                print(list_msg)
                 bot_handler.storage.put(f"{message['sender_full_name']}@{DOMINIO_CORPORATIVO}", {
                             "name":message["sender_full_name"], 
                             "email":message["sender_email"],
@@ -60,8 +61,8 @@ class SoporteHandler():
                             "is_completed": False
                         }
                     );
-                for msg in list_msg:
-                    bot_handler.send_reply(message, msg);
+                # for msg in list_msg:
+                #     bot_handler.send_reply(message, msg);
             else: 
                 pass
                 
