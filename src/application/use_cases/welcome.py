@@ -26,4 +26,4 @@ class Welcome(Command):
             if word in self.inputs[-1]:
                 list_message.append(Welcome_Messages.WELCOME_HELP_GENERAL_MESSAGE.value);
                 
-        return list_message; 
+        return (list_message, "Welcome"); 
