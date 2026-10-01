@@ -34,7 +34,7 @@ class SoporteHandler():
                     f"{message['sender_full_name']}@{DOMINIO_CORPORATIVO}", {
                         "name":message["sender_full_name"], 
                         "email":message["sender_email"],
-                        "object_use_case": None
+                        "object_use_case": None,
                         "process": None, 
                         "step": None, 
                         "is_completed": None
