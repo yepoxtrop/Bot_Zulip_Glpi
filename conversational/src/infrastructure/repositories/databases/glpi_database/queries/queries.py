@@ -1,5 +1,5 @@
-from infrastructure.repositories.databases.connector import connector_db;
-from infrastructure.repositories.databases.query_error import QueryError; # Clase de error personalizado
+from conversational.src.infrastructure.repositories.databases.connector import connector_db;
+from conversational.src.infrastructure.repositories.databases.query_error import QueryError; # Clase de error personalizado
 
 # Funciones para consulta e insercion en la base de datos del glpi
 def find_ticket(id_ticket:int):

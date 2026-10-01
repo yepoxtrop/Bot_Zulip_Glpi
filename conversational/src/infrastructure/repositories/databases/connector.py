@@ -1,4 +1,4 @@
-from src.settings.settings import GLPI_USER, GLPI_PASSWORD, GLPI_DATABASE, GLPI_HOST;
+from conversational.src.settings.settings import GLPI_USER, GLPI_PASSWORD, GLPI_DATABASE, GLPI_HOST;
 import mysql.connector as cn ;
 
 connector_db = cn.connect(
