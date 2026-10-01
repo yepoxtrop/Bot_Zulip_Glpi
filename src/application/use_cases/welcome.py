@@ -9,7 +9,7 @@ class Welcome(Command):
         self._initial_message = initial_message;
         self.inputs = initial_message.lower();
         
-    def send_message(self)->list:
+    def send_message(self)->tuple:
         list_message = [];
         print(len(self.workflow))
         
