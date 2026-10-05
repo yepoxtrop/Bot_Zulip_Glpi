@@ -1,9 +1,8 @@
 import datetime;
 
 class Ticket:
-    
-    
-    def __init__(self, id:int,  
+    def __init__(self, 
+                 id:int,  
                  entities_id:int, 
                  title_ticket:str, 
                  request_types:int, 
