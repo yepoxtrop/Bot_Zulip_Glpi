@@ -1,5 +1,5 @@
 # Doom Bot
-![Banner](./src/media/personal/Banner.jpg)
+![Banner](./src/application/media/personal/Banner.jpg)
 
 Hi, that's bot named **Doom** is a bot dedicated to resolve diferent types of customer supports among diferents platforms like:
 - `Whatsapp`
