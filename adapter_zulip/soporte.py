@@ -11,9 +11,9 @@ import zulip;
 #from src.models.messages import Messages;
 
 # Constantes creadas
-from conversational.src.settings.settings import ZULIP_URL, DOMINIO_CORPORATIVO;
+from src.settings.settings import ZULIP_URL, DOMINIO_CORPORATIVO;
 
-from conversational.src.application.use_cases import Welcome;
+from src.application.use_cases import Welcome;
 
 class SoporteHandler():
     def usage(self) -> str:
@@ -23,7 +23,7 @@ class SoporteHandler():
         este bot después de hablar con el colaborador podrá informarle
         al personal de soporte técnico sobre la incidencia reportada.
         """
-    def handle_message(self, message: Dict[str, Any], bot_handler: AbstractBotHandler) -> None:
+    def handle_message(self, id:int,  message: Dict[str, Any], bot_handler: AbstractBotHandler) -> None:
         try:
             print(message)
                     
