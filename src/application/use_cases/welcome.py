@@ -1,6 +1,6 @@
 from .command import Command;
 from ...domain.models.messages import Welcome_Messages;
-from ...settings import GLPI_KEYWORDS;
+from ..settings import GLPI_KEYWORDS;
 
 class Welcome(Command):
     
