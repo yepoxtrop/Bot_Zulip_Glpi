@@ -52,4 +52,4 @@ class User:
             self.validate_username() and 
             self.validate_identity() and 
             self.validate_origin()
-        )
+        ) 

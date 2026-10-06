@@ -17,4 +17,4 @@ __all__ = [
     "Entities",
     "Request_Types",
     "Platforms"
-]; 
+];
