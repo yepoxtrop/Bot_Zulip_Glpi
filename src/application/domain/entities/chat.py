@@ -1,16 +1,27 @@
 import datetime;
 from .message import Message;
+from .library_logs import LibraryLog;
+from .ticket import Ticket;
 from ..models.chats import Chats;
 from .user import User;
 
 class Chat:
-    def __init__(self, id:int, serial:str, user:User, date_satart:datetime.datetime):
+    def __init__(
+        self,
+        id:int,
+        serial:str,
+        user:User,
+        date_satart:datetime.datetime,
+        logs_chat:LibraryLog
+    ):
         self.__id = id; 
         self._serial:str = serial;
         self._status:bool = True;
         self._date_start = date_satart;
         self._date_end:datetime.datetime|None = None;
         self._messages:list[Message]|None = None;
+        self._tickets:list[Ticket] = [];
+        self._logs_chat = logs_chat;
         self._process:list[Chats]|None = None;
         self._steps:list[Chats]|None = None;
         self._users:list[User] = [user];
@@ -40,6 +51,14 @@ class Chat:
     @property
     def messages(self) -> list[Message]|None:
         return self._messages;
+
+    @property
+    def tickets(self) -> list[Ticket]:
+        return self._tickets;
+
+    @property
+    def logs_chat(self) -> LibraryLog:
+        return self._logs_chat;
     
     @property
     def process(self) -> list[Chats]|None:
@@ -71,6 +90,18 @@ class Chat:
     def validate_users(self):
         if not self._users or not isinstance(self._users, list) or len(self._users) == 0:
             raise ValueError("Users cannot be empty.");
+        return True;
+
+    def validate_logs_chat(self):
+        if not isinstance(self._logs_chat, LibraryLog):
+            raise ValueError("Chat logs must be an instance of LibraryLog.");
+        return True;
+
+    def validate_tickets(self):
+        if not isinstance(self._tickets, list):
+            raise ValueError("Tickets must be a list.");
+        if any(not isinstance(ticket, Ticket) for ticket in self._tickets):
+            raise ValueError("Tickets must contain Ticket instances.");
         return True;
     
     def update_date_end(self, date_end:datetime.datetime):
@@ -124,5 +155,7 @@ class Chat:
             self.validate_serial() and 
             self.validate_status() and 
             self.validate_date_start() and 
-            self.validate_users()
+            self.validate_users() and
+            self.validate_logs_chat() and
+            self.validate_tickets()
         );

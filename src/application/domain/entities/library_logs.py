@@ -1,8 +1,9 @@
 from .log import Log;
+from .log_chats import LogChat;
 
 class LibraryLog:
     
-    def __init__(self, id:int, path:str, name:str, list_logs:list[Log]|list = []):
+    def __init__(self, id:int, path:str, name:str, list_logs:list[Log]|list[LogChat]|list = []):
         self.__id = id;
         self._list_logs = list_logs;
         self._path = path;
