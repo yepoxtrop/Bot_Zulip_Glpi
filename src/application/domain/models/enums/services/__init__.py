@@ -1,10 +1,10 @@
-from .impacto import Impacto;
-from .prioridad import Prioridad;
-from .urgencia import Urgencia;
-from .categorias import Categorias;
-from .tipo_tickets import TipoTickets;
-from .entities import Entities;
-from .request_types import Request_Types;
+from .GLPI.impacto import Impacto;
+from .GLPI.prioridad import Prioridad;
+from .GLPI.urgencia import Urgencia;
+from .GLPI.categorias import Categorias;
+from .GLPI.tipo_tickets import TipoTickets;
+from .GLPI.entities import Entities;
+from .GLPI.request_types import Request_Types;
 
 __all__ = [
     "Impacto", 

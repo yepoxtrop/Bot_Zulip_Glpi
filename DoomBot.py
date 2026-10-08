@@ -1,10 +1,7 @@
 import uvicorn;
-from fastapi import FastAPI;
+from src.adapters.infraestructure.api.app import app;
 
-app = FastAPI()
-
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-#uvicorn.exe DoomBot:app --reload
+if __name__ == "__main__":
+    uvicorn.run(
+        "DoomBot:app", host="127.0.0.1", port=8000, reload=True
+    ); 
