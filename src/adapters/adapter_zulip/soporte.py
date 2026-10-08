@@ -11,7 +11,7 @@ import zulip;
 #from src.models.messages import Messages;
 
 # Constantes creadas
-from application.settings.settings import ZULIP_URL, DOMINIO_CORPORATIVO;
+from settings.settings import ZULIP_URL, DOMINIO_CORPORATIVO;
 
 from src.application.use_cases import Welcome;
 
